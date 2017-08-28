@@ -4,15 +4,17 @@ Rails.application.routes.draw do
 
   get 'static_pages/home'
 
-  get 'static_pages/about'
+  get  '/about' => 'static_pages#about'
 
   root 'users#index'
   get 'users' => 'users#index'
 
   post 'users' => 'users#create'
-  get 'users/new' => 'users#new'
+  get '/new', to: 'users#new', as: 'signup'
+
 
   get 'users/:id' =>'user#show'
+
 
 
   # get 'users/index'

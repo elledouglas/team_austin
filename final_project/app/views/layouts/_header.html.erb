@@ -1,0 +1,16 @@
+<!-- Header navbar rendered in application.html.erb, contains currently unused class names -->
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+   <div id="branding">
+     <h1><%= link_to "NOBLE", root_path, id: "logo" %></h1>
+   </div>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "How We're Different",   about_path %></li>
+        <li><%= link_to "Log in",                '#' %></li>
+        <li><%= link_to "Sign Up",               signup_path %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

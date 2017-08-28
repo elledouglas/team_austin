@@ -12,25 +12,16 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-       <div id="branding">
-         <h1><%= link_to "NOBLE", root_path, id: "logo" %></h1>
-       </div>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "How We're Different",   static_pages_about_path %></li>
-            <li><%= link_to "Log in",                '#' %></li>
-            <li><%= link_to "Sign Up",               users_new_path %></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <div class="container">
+     <%= render 'layouts/header' %>  <!-- This splits off the header into a seperate file for readability, see _header.html.erb in layouts -->
+
+
+    <div class="container"> <!-- Currently there are unused class/id names such as container that a tutorial had me use. I might use them later. -->
       <%= yield %>
     </div>
+
     <footer>
       <p> FOOTER </p>
     </footer>
+
   </body>
 </html>
