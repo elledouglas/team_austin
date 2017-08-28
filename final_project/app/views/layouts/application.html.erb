@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) %> | Noble Dating A</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -21,7 +21,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "How We're Different",   static_pages_about_path %></li>
             <li><%= link_to "Log in",                '#' %></li>
-            <li><%= link_to "Sign Up",               '#' %></li>
+            <li><%= link_to "Sign Up",               users_new_path %></li>
           </ul>
         </nav>
       </div>
