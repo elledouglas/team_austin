@@ -1,0 +1,10 @@
+<h1> All Profiles </h1>
+<% @user.each do |user| %>
+<div>
+  <%= user.user_name %>
+  <%= user.age %>
+  <%= user.gender %>
+  <%= user.children %>
+  <%= user.sexual_preference%>
+</div>
+<% end %>
