@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FinalProject</title>
+    <title><%= yield(:title) %> | Noble Dating A</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Lateef" rel="stylesheet">
   </head>
 
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <%= link_to "sample app", '#', id: "logo" %>
+       <div id="branding">
+         <h1><%= link_to "NOBLE", root_path, id: "logo" %></h1>
+       </div>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   '#' %></li>
-            <li><%= link_to "Help",   '#' %></li>
-            <li><%= link_to "Log in", '#' %></li>
+            <li><%= link_to "How We're Different",   static_pages_about_path %></li>
+            <li><%= link_to "Log in",                '#' %></li>
+            <li><%= link_to "Sign Up",               '#' %></li>
           </ul>
         </nav>
       </div>
@@ -23,5 +29,8 @@
     <div class="container">
       <%= yield %>
     </div>
+    <footer>
+      <p> FOOTER </p>
+    </footer>
   </body>
 </html>

@@ -13,3 +13,517 @@
  *= require_tree .
  *= require_self
  */
+
+ /** {
+ box-sizing: border-box;
+ }*/
+ body {
+ margin: 0;
+ font-family: 'Lora', serif;
+ font-size: 17px;
+ line-height:1.6;
+ color: #808080;
+
+ }
+
+ #kiss {
+ background-image:url('/assets/kiss.jpeg');
+ height: 100vh;
+ /*#viewportheight*/
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ flex-direction:column;
+ justify-content: center;
+ align-items:center;
+ padding:0 20px;
+ text-align:center;
+ }
+ #kiss h1{
+ font-size: 100px;
+ line-height: 1.2;
+ color: white;
+ }
+
+ #kiss p{
+ font-size: 20px;
+ }
+
+ #kiss .button{
+ font-size: 18px;
+ text-decoration:none;
+ color: white;
+ border: purple 1px solid;
+ border-radius: 10px
+ padding 10px 20px;
+ }
+ #kiss .button.hover{
+ background: #FAFA8C;
+ color: #E6E6FA;
+ }
+
+ #section-a{
+ padding: 20px;
+ background: #FAFA8C;
+ color: #fff;
+ text-align: center;
+ width:20%;
+
+ }
+
+ #section-b{
+ padding: 20px
+
+ background: #FAFA8C;
+ text-align: center;
+ width: 20%;
+
+ }
+
+ #section-c{
+ display:flex;
+ }
+
+ #section-c .box-1,.box-2, #section-c .box-3{
+ color: #fff;
+ background: green;
+ width: 30%;
+ text-align: center
+
+ }
+
+
+ #section-c div {
+ padding: 20px;
+ }
+
+ /*=====================ABOUT PAGE*/
+ #video{
+ background-image:url('/assets/video.jpg');
+ height: 80vh;
+ background-size: cover;
+ background-position:body {
+ margin: 0;
+ font-family: 'Lora', serif;
+ font-size: 17px;
+ line-height:1.6;
+ color: #808080;
+
+ }
+
+ #kiss {
+ background-image:url('/assets/kiss.jpeg');
+ height: 100vh;
+ /*#viewportheight*/
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ flex-direction:column;
+ justify-content: center;
+ align-items:center;
+ padding:0 20px;
+ text-align:center;
+ }
+ #kiss h1{
+ font-size: 100px;
+ line-height: 1.2;
+ color: white;
+ }
+
+ #kiss p{
+ font-size: 20px;
+ }
+
+ #kiss .button{
+ font-size: 18px;
+ text-decoration:none;
+ color: white;
+ border: purple 1px solid;
+ border-radius: 10px
+ padding 10px 20px;
+ }
+ #kiss .button.hover{
+ background: #FAFA8C;
+ color: #E6E6FA;
+ }
+
+ #section-a{
+ padding: 20px;
+ background: #FAFA8C;
+ color: #fff;
+ text-align: center;
+ width:20%;
+
+ }
+
+ #section-b{
+ padding: 20px
+
+ background: #FAFA8C;
+ text-align: center;
+ width: 20%;
+
+ }
+
+ #section-c{
+ display:flex;
+ }
+
+ #section-c .box-1,.box-2, #section-c .box-3{
+ color: #fff;
+ background: green;
+ width: 30%;
+ text-align: center
+
+ }
+
+
+ #section-c div {
+ padding: 20px;
+ }
+
+ /*=====================ABOUT PAGE*/
+ #video{
+ background-image:url('/assets/video.jpg');
+ height: 80vh;
+ background-size: cover;
+ background-position: center;
+ flex-direction:column;
+ justify-content: center;
+ align-items:center;
+ padding:0px;
+
+ }
+
+ /*ON ABOUT PAGE*/
+ .container {
+ width: 100%;
+ /*margin: auto;*/
+ overFlow: hidden;
+ background: #ADD8E6
+ height: 20
+ }
+
+ /*HEADER*/
+ header {
+ background: #ADD8E6;
+ color: #pink;
+ padding-top: 30px;
+ min-height: 70px;
+ /*adjusts when responsive*/
+ border-bottom: white 3px solid;
+ width: 100%
+ }
+
+ header a {
+ color: #808080;
+ text-decoration: none;
+ text-tranform: uppercase;
+ font-size: 16px;
+
+ }
+ header ul {
+ /*ul have margin and padding by default*/
+ margin-left: 50;
+ paddin: 0;
+
+ }
+
+ header li {
+ float: left;
+ display: inline;
+ padding: 0 20px 0 20px;
+
+ }
+ header #branding {
+ float: left;
+ }
+
+ header #branding h1 {
+ margin: 0;
+ }
+
+ header nav{
+ float: right;
+ padding-right: 1%;
+ }
+
+
+ footer {
+ padding: 10px;
+ margin-top;
+ background-color: #ADD8E6;
+ text-align: center;
+ color: grey;
+ width: 100%;
+ }
+
+ #branding h1 {
+ padding-left: 40%;
+
+ }
+
+ h2 {
+ font-size: 22px;
+ color:
+ #f9f9f9;
+ font-family: 'Homemade Apple', cursive;
+ }
+
+ #about_text p{
+ padding-top: 6vh;
+ width: 30%;
+ float: right;
+ padding-right: 15px;}
+
+ #rose {
+ background-image:url('/assets/rose.jpg');
+ height: 100vh;
+ /*#viewportheight*/
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ flex-direction:column;
+ justify-content: center;
+ align-items:center;
+ padding:0 20px;
+ text-align:center;
+ }
+ img {
+ width:30%;
+ height:30vh;
+ padding-left: 1%;
+ }
+
+ /*profile page*/
+
+ #profile_pic_container {
+   background-color:lavender;
+   margin: 100px 5px 100px;
+   padding: 10px}
+
+ #card {
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+     max-width: 300px;
+     margin: 110px;
+
+     text-align: center;
+     color: #34110C;
+
+ }
+
+ #title {
+     color: grey;
+     font-size: 18px;
+ }
+
+ button {
+     border: none;
+     outline: 0;
+     display: inline-block;
+     padding: 8px;
+     color: white;
+     background-color: #light yellow;
+     text-align: center;
+     cursor: pointer;
+     width: 20%;
+     font-size: 18px;
+     margin: 1px 175px 150px 40px;
+ }
+
+ a {
+     text-decoration: none;
+     font-size: 22px;
+     color: black;
+ }
+
+ button:hover, a:hover {
+     opacity: 0.7;
+ }
+
+ #email {
+ margin: 150px;
+
+ }
+
+ #form {
+ display: inline;
+ width: 50%;
+ /*height: 100px;*/
+ background-color: powderblue;
+ float: left;
+ margin-left: 600px;
+ /*margin-top: 110px;*/
+ margin-right: 40px;
+
+ }
+  center;
+ flex-direction:column;
+ justify-content: center;
+ align-items:center;
+ padding:0px;
+
+ }
+
+ /*ON ABOUT PAGE*/
+ .container {
+ width: 100%;
+ /*margin: auto;*/
+ overFlow: hidden;
+ background: #ADD8E6
+ height: 20
+ }
+
+ /*HEADER*/
+ header {
+ background: #ADD8E6;
+ color: #pink;
+ padding-top: 30px;
+ min-height: 70px;
+ /*adjusts when responsive*/
+ border-bottom: white 3px solid;
+ width: 100%
+ }
+
+ header a {
+ color: #808080;
+ text-decoration: none;
+ text-tranform: uppercase;
+ font-size: 16px;
+
+ }
+ header ul {
+ /*ul have margin and padding by default*/
+ margin-left: 50;
+ paddin: 0;
+
+ }
+
+ header li {
+ float: left;
+ display: inline;
+ padding: 0 20px 0 20px;
+
+ }
+ header #branding {
+ float: left;
+ }
+
+ header #branding h1 {
+ margin: 0;
+ }
+
+ header nav{
+ float: right;
+ padding-right: 1%;
+ }
+
+
+ footer {
+ padding: 10px;
+ margin-top;
+ background-color: #ADD8E6;
+ text-align: center;
+ color: grey;
+ width: 100%;
+ }
+
+ #branding h1 {
+ padding-left: 40%;
+
+ }
+
+ h2 {
+ font-size: 22px;
+ color:
+ #f9f9f9;
+ font-family: 'Homemade Apple', cursive;
+ }
+
+ #about_text p{
+ padding-top: 6vh;
+ width: 30%;
+ float: right;
+ padding-right: 15px;}
+
+ #rose {
+ background-image:url('/assets/rose.jpg');
+ height: 100vh;
+ /*#viewportheight*/
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ flex-direction:column;
+ justify-content: center;
+ align-items:center;
+ padding:0 20px;
+ text-align:center;
+ }
+ img {
+ width:30%;
+ height:30vh;
+ padding-left: 1%;
+ }
+
+ /*profile page*/
+
+ #profile_pic_container {
+   background-color:lavender;
+   margin: 100px 5px 100px;
+   padding: 10px}
+
+ #card {
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+     max-width: 300px;
+     margin: 110px;
+
+     text-align: center;
+     color: #34110C;
+
+ }
+
+ #title {
+     color: grey;
+     font-size: 18px;
+ }
+
+ button {
+     border: none;
+     outline: 0;
+     display: inline-block;
+     padding: 8px;
+     color: white;
+     background-color: #light yellow;
+     text-align: center;
+     cursor: pointer;
+     width: 20%;
+     font-size: 18px;
+     margin: 1px 175px 150px 40px;
+ }
+
+ a {
+     text-decoration: none;
+     font-size: 22px;
+     color: black;
+ }
+
+ button:hover, a:hover {
+     opacity: 0.7;
+ }
+
+ #email {
+ margin: 150px;
+
+ }
+
+ #form {
+ display: inline;
+ width: 50%;
+ /*height: 100px;*/
+ background-color: powderblue;
+ float: left;
+ margin-left: 600px;
+ /*margin-top: 110px;*/
+ margin-right: 40px;
+
+ }
