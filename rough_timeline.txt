@@ -2,28 +2,28 @@
 
                              Andrew                             Kathleen
 ---------------------------------------------------------------------------------------------------------
-Weekend                 Sign-up form, authentication            Research APIs to send email, video embedding, mock HTML page for
-                        authorization.                          profile show page, figure out how and where to store videos.
-                                                                May take an API to store videos. (Amazon S3 API is ideal)
+Weekend                 Sign-up form, authentication             Research APIs to send email, video embedding, mock HTML page for
+                        authorization.                           profile show page, figure out how and where to store videos.
+                                                                 May take an API to store videos. (Amazon S3 API is ideal)
 
-Monday                  Sign up / login                         Video embedding, add videos to users table
-                        secure password_digest                  (can embed single dummy video b4 hosting is setup)
+Monday                  Sign up / login                          Video embedding, add videos to users table
+                        secure password_digest / strong params   (can embed single dummy video b4 hosting is setup)
 
-Tuesday                 Signup / profile creation               API implementation
-                        / login continued /Strong params        (S3)
+Tuesday                 Profile creation / Sessions              API implementation
+                        / Login                                  (S3)
 
-Wednesday               Sessions controller                     API implementation
-                        Implement favorites in DB,              (S3)
+Wednesday               Updating, showing, deleting users        API implementation
+                        Implement favorites in DB,               (S3)
                         create associations
 
-Thursday               Implement ability to edit/destroy       Populating DB with fake users and
-                       profile                                 Volunteer team marvin users
+Thursday               Implement ability to edit/destroy         Populating DB with fake users and
+                       profile                                   Volunteer team marvin users
 
-Friday                 filter show page results                API implementation continued
+Friday                 Filter show page results                  API implementation continued
                        / ability to block users
 
-Weekend                Implement ability to filter show        HTML/CSS styling
-                       pages results
+Weekend                Filter show page results /                HTML/CSS styling/Polishing
+                       Special authorization
 
 Monday                                ---- Tying up loose ends ----
 
