@@ -18,6 +18,8 @@ class UsersController < ApplicationController
 
       respond_to do |format|
        if @user.save
+         log_in @user
+         flash[:success] = "User Profile Successfully Created"
          # Tell the UserMailer to send a welcome email after save
          UserMailer.welcome_email(@user).deliver_now
 

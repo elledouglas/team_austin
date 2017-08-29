@@ -293,15 +293,14 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-<<<<<<< HEAD
     rbvmomi (1.11.3)
       builder (~> 3.0)
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
-=======
+
     redis (3.3.3)
->>>>>>> 2828ea7a441aababce585dd8f923ae1e0f4580cd
+
     ruby_dep (1.5.0)
     ruby_http_client (3.1.0)
     rubyzip (1.2.1)
@@ -368,10 +367,9 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-<<<<<<< HEAD
-=======
+
   bootstrap-sass (= 3.3.7)
->>>>>>> 2828ea7a441aababce585dd8f923ae1e0f4580cd
+
   byebug
   capybara (~> 2.13)
   carrierwave

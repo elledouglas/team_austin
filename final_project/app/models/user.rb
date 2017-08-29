@@ -22,6 +22,14 @@ class User < ApplicationRecord
       @user = User.new
   end
 
+  # Returns the hash digest of the given string.
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+
   # Checks whether a password is needed or not. For validations only.
   # Passwords are always required if it's a new record, or if the password
   # or confirmation are being set somewhere.

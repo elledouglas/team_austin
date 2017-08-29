@@ -22,7 +22,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password_confirmation: "password" } }
     end
     follow_redirect!                 # these two lines establish that the redirect after user submission works as expected
-    assert_template 'users/show'
+    assert_template 'users/index'
+    assert is_logged_in?
   end
 
 end
