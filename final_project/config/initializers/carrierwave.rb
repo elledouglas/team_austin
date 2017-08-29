@@ -1,4 +1,5 @@
 # config/initializers/carrierwave.rb
+<<<<<<< HEAD
 
 CarrierWave.configure do |config|
   config.fog_credentials = {

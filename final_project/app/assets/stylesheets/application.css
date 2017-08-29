@@ -12,4 +12,97 @@
  *
  *= require_tree .
  *= require_self
- */
+
+/* GLOBAL */
+
+* {
+box-sizing: border-box;
+}
+
+ /*HEADER*/
+ header {
+ background-color: #ADD8E6;
+ color: #pink;
+ padding-top: 30px;
+ min-height: 70px;
+ border-bottom: white 3px solid;
+ width: 100%
+ }
+
+ header a {
+ color: #808080;
+ text-decoration: none;
+ text-transform: uppercase;
+ font-size: 16px;
+ }
+
+ header ul {
+ /*ul have margin and padding by default*/
+ margin-left: 50;
+ padding: 0;
+ }
+
+ header li {
+ float: left;
+ display: inline;
+ padding: 0 20px 0 20px;
+ }
+
+ header #branding {
+ float: left;
+ }
+
+ header #branding h1 {
+ margin: 0;
+ }
+
+ header nav {
+ float: right;
+ padding-right: 1%;
+ }
+
+
+ footer {
+ padding: 10px;
+ background-color: #ADD8E6;
+ text-align: center;
+ color: grey;
+ width: 100%;
+ }
+
+ #branding h1 {
+ padding-left: 40%;
+ }
+
+ h2 {
+ font-size: 22px;
+ color:
+ #f9f9f9;
+ font-family: 'Homemade Apple', cursive;
+ }
+
+ #about_text p {
+ padding-top: 6vh;
+ width: 30%;
+ float: right;
+ padding-right: 15px;
+}
+
+ #rose {
+ background-image:url('/assets/rose.jpg');
+ height: 100vh;
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ padding: 0 20px;
+ text-align: center;
+ }
+
+ img {
+ width:30%;
+ height:30vh;
+ padding-left: 1%;
+ }
