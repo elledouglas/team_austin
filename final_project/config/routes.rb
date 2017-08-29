@@ -9,11 +9,16 @@ Rails.application.routes.draw do
   root 'users#index'
   get 'users' => 'users#index'
 
-  post 'users' => 'users#create'
+  post 'users', to: 'users#create', as: 'create_user'
   get '/new', to: 'users#new', as: 'signup'
 
 
-  get 'users/:id' =>'user#show'
+
+
+  get 'users/:id', to: 'users#show', as: 'user_profile'
+
+  # resources :users
+
 
 
 
