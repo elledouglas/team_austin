@@ -12,7 +12,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   # end
 
   def setup
-    @base_title = "Noble Dating App"
+    @base_title = "Noble Dating"
   end
 
   test "should get home" do

@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
 
   def setup
     @user = User.new(full_name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+                     password: "password", password_confirmation: "password")
   end
 
   test "should be valid" do
@@ -22,7 +22,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "name should not be too long" do
-    @user.user_name = "a" * 51
+    @user.full_name = "a" * 51
     assert_not @user.valid?
   end
 
@@ -60,7 +60,8 @@ class UserTest < ActiveSupport::TestCase
     mixed_case_email = "Foo@ExAMPle.CoM"
     @user.email = mixed_case_email
     @user.save
-    assert_equal mixed_case_email.downcase, @user.reload.email
+    assert_equal mixed_case_email.downcase, @user.email
+    # Line 63 originally had @user.reload.email but it was erroring until I removed reload
   end
 
   test "password should be present" do

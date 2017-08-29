@@ -1,32 +1,32 @@
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
-
-/* universal */
-/*          CURRENTLY REDUNDANT STYLE SHEET, MAY USE IN THE FUTURE FOR PARTIALS ONLY SO LEAVE FOR NOW.   */
-
-/* mixins, variables, etc. */
-
-$gray-medium-light: #eaeaea;
-
-@mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
-}
-
-
-
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-
-
+//  @import "bootstrap-sprockets";
+//  @import "bootstrap";
+//
+// /* universal */
+//
+// /*          CURRENTLY REDUNDANT STYLE SHEET, MAY USE IN THE FUTURE FOR PARTIALS ONLY SO LEAVE FOR NOW.   */
+//
+// /* mixins, variables, etc. */
+//
+//  $gray-medium-light: #eaeaea;
+//
+// @mixin box_sizing {
+//   -moz-box-sizing:    border-box;
+//   -webkit-box-sizing: border-box;
+//   box-sizing:         border-box;
+// }
+//
+//
+//
+//  /* miscellaneous */
+// .debug_dump {
+//   clear: both;
+//   float: left;
+//   width: 100%;
+//   margin-top: 45px;
+//   @include box_sizing;
+// }
+//
+//
 // body {
 //   padding-top: 60px;
 // }
@@ -39,6 +39,7 @@ $gray-medium-light: #eaeaea;
 //   resize: vertical;
 // }
 //
+//
 // .center {
 //   text-align: center;
 // }
@@ -46,16 +47,17 @@ $gray-medium-light: #eaeaea;
 // .center h1 {
 //   margin-bottom: 10px;
 // }
-
-/* typography */
-
+//
+// /* typography */
+//
 // h1, h2, h3, h4, h5, h6 {
 //   line-height: 1;
 // }
 //
 // h1 {
 //   font-size: 3em;
-//   letter-spacing: -2px;
+//   letter-spac// @import "bootstrap-sprockets";
+// @import "bootstrap";ing: -2px;
 //   margin-bottom: 30px;
 //   text-align: center;
 // }
@@ -73,9 +75,9 @@ $gray-medium-light: #eaeaea;
 //   font-size: 1.1em;
 //   line-height: 1.7em;
 // }
-
-/* header */
-
+//
+// /* header */
+//
 // #logo {
 //   float: left;
 //   margin-right: 10px;
@@ -91,9 +93,9 @@ $gray-medium-light: #eaeaea;
 //   color: #fff;
 //   text-decoration: none;
 // }
-
-/* footer */
-
+//
+// /* footer */
+//
 // footer {
 //   margin-top: 45px;
 //   padding-top: 5px;
@@ -122,10 +124,10 @@ $gray-medium-light: #eaeaea;
 //   float: left;
 //   margin-left: 15px;
 // }
-
-
-/* forms */
-
+//
+//
+// /* forms */
+//
 // input, textarea, select, .uneditable-input {
 //   border: 1px solid #bbb;
 //   width: 100%;
@@ -136,7 +138,7 @@ $gray-medium-light: #eaeaea;
 // input {
 //   height: auto !important;
 // }
-
+//
 // #error_explanation {
 //   color: red;
 //   ul {

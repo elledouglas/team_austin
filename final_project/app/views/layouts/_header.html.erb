@@ -8,8 +8,13 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "How We're Different",   about_path %></li>
-        <li><%= link_to "Log in",                '#' %></li>
-        <li><%= link_to "Sign Up",               signup_path %></li>
+        <% if logged_in? %>
+          <li><%= link_to "My Profile", current_user[:user_id] %></li>
+          <li><%= link_to "Log out", logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Sign Up", signup_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
