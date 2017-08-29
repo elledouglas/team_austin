@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FinalProject</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Lateef" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+     <%= render 'layouts/header' %>  <!-- This splits off the header into a seperate file for readability, see _header.html.erb in layouts -->
+
+
+    <div class="container"> <!-- Currently there are unused class/id names such as container that a tutorial had me use. I might use them later. -->
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>  <!-- This can be toggled on to display a useful debugging info box on any page. Toggle off at your convenience. -->
+    </div>
+
+    <footer>
+      <p> FOOTER </p>
+    </footer>
+
   </body>
 </html>

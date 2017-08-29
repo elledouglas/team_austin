@@ -1,29 +1,32 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+
   test "should get index" do
-    get users_index_url
+    get users_path
     assert_response :success
   end
 
   test "should get new" do
-    get users_new_url
+    get signup_path
     assert_response :success
   end
 
   test "should get create" do
-    get users_create_url
+    get create_user_path
     assert_response :success
   end
 
-  test "should get edit" do
-    get users_edit_url
-    assert_response :success
-  end
+  # Have not implemented edit and destroy yet
 
-  test "should get destroy" do
-    get users_destroy_url
-    assert_response :success
-  end
+  # test "should get edit" do
+  #   get users_edit_url
+  #   assert_response :success
+  # end
+
+  # test "should get destroy" do
+  #   get users_destroy_url
+  #   assert_response :success
+  # end
 
 end
