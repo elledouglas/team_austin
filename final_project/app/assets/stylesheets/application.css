@@ -19,6 +19,25 @@
 box-sizing: border-box;
 }
 
+/* forms */
+
+.checkbox {            /*  This and sessions #remember_me is for remembering login  */
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+
+
+
  /*HEADER*/
  header {
  background-color: #ADD8E6;

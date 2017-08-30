@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       log_in user
-      session[:user_id] = user.id
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:notice] = 'Successfully logged in!'
       redirect_to root_url
     else
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to(:root, notice: 'Logged out!')
   end
 

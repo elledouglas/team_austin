@@ -20,7 +20,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
-  test "login with valid information" do
+  test "login with valid information followed by logout" do
     # 1. This test signs in using user template
     get login_path
     post login_path, params: { session: { email:    @user.email,
