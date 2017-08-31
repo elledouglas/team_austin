@@ -8,7 +8,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   end
 
+  # We have this test because we want to disallow non-signed up users from viewing the index of user profiles.
+  test "should redirect index when not logged in" do
+    get users_path
+    assert_redirected_to login_url
+  end
+
   test "should get index" do
+    log_in_as(@user)
     get users_path
     assert_response :success
   end
@@ -19,6 +26,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get create" do
+    log_in_as(@user)
     get create_user_path
     assert_response :success
   end
@@ -60,6 +68,21 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     patch update_user_profile_path(@user), params: { user: { full_name: @user.full_name,
                                               email: @user.email } }
 #    assert flash.empty? # I assert that the flash-messages hash is empty. Currently failing the test because apparently it isn't empty.
+    assert_redirected_to root_url
+  end
+
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'User.count' do
+      delete user_profile_path(@user)
+    end
+    assert_redirected_to root_url
+  end
+
+  test "should redirect destroy when logged in as different user" do
+    log_in_as(@other_user)
+    assert_no_difference 'User.count' do
+      delete user_profile_path(@user)
+    end
     assert_redirected_to root_url
   end
 

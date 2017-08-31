@@ -1,6 +1,7 @@
 <% provide(:title, "Edit My Profile") %>
 <h1>Update your profile</h1>
 
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user, url: "/users/#{@user.id}" do |f| %>
@@ -21,6 +22,13 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %> <br> <br>
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
+
+      <% if current_user?(@user) %>
+        | <%= link_to "Delete My Account", delete_user_profile_path, method: :delete,
+                                      data: { confirm: "Are you sure? This cannot be undone!" } %>
+      <% end %>
+
+
     <% end %>
   </div>
 </div>

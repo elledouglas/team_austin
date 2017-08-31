@@ -7,9 +7,10 @@
    </div>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "How We're Different",   about_path %></li>
+        <li><%= link_to "How we're different",   about_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "My Profile", current_user[:user_id] %></li>
+          <li><%= link_to "My dating pool", users_path %></li>
+          <li><%= link_to "My profile", current_user[:user_id] %></li>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>

@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  # \/ Requires user to be logged in before editing or updating
-    before_action :logged_in_user, only: [:edit, :update]
-  # \/ Requires that one be the user of the profile page one is trying to edit
-    before_action :correct_user,   only: [:edit, :update]
+  # \/ Requires user to be logged in before editing, updating, or viewing index
+    before_action :logged_in_user, only: [:index, :edit, :update]
 
-
+  # \/ Requires that one be the user of the profile page one is trying to edit or destroy
+    before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
     @user = User.all
@@ -52,6 +51,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "You have deleted your account, including all profile information!"
+    redirect_to users_url
+  end
+
   private
 
    def user_params
@@ -64,7 +69,7 @@ class UsersController < ApplicationController
 # Confirms a logged-in user.
   def logged_in_user
     unless logged_in?
-      store_location  # This line uses a method in sessions_helper to store request location so that it may redirect them to that location upon login. 
+      store_location  # This line uses a method in sessions_helper to store request location so that it may redirect them to that location upon login.
       flash[:danger] = "Please log in."
       redirect_to login_path
     end
