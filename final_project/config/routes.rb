@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/new', to: 'users#new', as: 'signup'
   get 'users/:id', to: 'users#show', as: 'user_profile'
   get 'users/:id/edit', to: 'users#edit', as: 'edit_user_profile'
-  patch 'users/:id', to: 'users#update'
+  patch 'users/:id', to: 'users#update', as: 'update_user_profile'
   delete 'users/:id', to: 'users#destroy', as: 'delete_user_profile'
 
   get    '/login',   to: 'sessions#new'

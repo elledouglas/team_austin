@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  # \/ Requires user to be logged in before editing or updating
+    before_action :logged_in_user, only: [:edit, :update]
+  # \/ Requires that one be the user of the profile page one is trying to edit
+    before_action :correct_user,   only: [:edit, :update]
+
+
 
   def index
     @user = User.all
@@ -33,11 +39,11 @@ class UsersController < ApplicationController
    end
 
    def edit
-     @user = User.find(params[:id])
+     @user = User.find(params[:id])  # Could technically delete this line because of the correct_user user method and filter? (line 5)
    end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:id])  # Could technically delete this line because of the correct_user user method and filter? (line 5)
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to user_profile_path(@user)
@@ -52,5 +58,22 @@ class UsersController < ApplicationController
      params.require(:user).permit(:full_name, :email, :password,
                                   :password_confirmation)
    end
+
+   # \/ Before filters
+
+# Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      store_location  # This line uses a method in sessions_helper to store request location so that it may redirect them to that location upon login. 
+      flash[:danger] = "Please log in."
+      redirect_to login_path
+    end
+  end
+
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
 end
