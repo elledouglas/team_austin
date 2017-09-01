@@ -13,7 +13,8 @@ class User < ApplicationRecord
   # Validations for password
   validates :password, length: {minimum: 8}, confirmation: true, presence: true,:if => :password_required?
   has_secure_password
-
+  mount_uploader :video, VideoUploader
+  mount_uploader :image, ImageUploader
   def index
 
   end

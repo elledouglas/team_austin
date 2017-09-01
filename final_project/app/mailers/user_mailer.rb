@@ -4,6 +4,15 @@ class UserMailer < ApplicationMailer
  def welcome_email(user)
    @user = user
    @url  = 'http://example.com/login'
-   mail(to: 'kathleenmcclay@gmail.com', subject: 'Welcome to Nobleman')
+   mail(to: @user.email, subject: 'Welcome to Nobleman')
  end
+
+ def send_message(user_id, message)
+   @user = User.find(user_id)
+   @message = message
+   mail(to: @user.email, subject: 'You have a message from')
+ end
+
+
+
 end

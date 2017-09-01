@@ -1,1 +1,13 @@
+<h1>Individual User Profile</h1>
 
+<p><%= @user.full_name %></p>
+<p><%= @user.age %></p>
+<p><%= @user.occupation %></p>
+<a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a>
+
+  <p>Send e-mail to someone@example.com</p>
+  <%=form_for :message, url: sendemail_path(@user.id) do |f| %>
+
+<%= f.text_area :message %>
+<%= f.submit "send" %>
+<%end%>
