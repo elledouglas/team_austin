@@ -1,10 +1,13 @@
 <h1> All Profiles </h1>
-<% @user.each do |user| %>
+
+  <% @user.each do |user| %>
+
 <div>
-  <%= user.user_name %>
-  <%= user.age %>
-  <%= user.gender %>
-  <%= user.children %>
-  <%= user.sexual_preference%>
+  <p><%= user.full_name%></p>
+  <p><%= user.age %></p>
+  <p><%= user.occupation %></p>
+  <a href="/users/<%=user.id%>"><img src="<%= user.image.url %>"/>
+</a>
 </div>
+
 <% end %>
