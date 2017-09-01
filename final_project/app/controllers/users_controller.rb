@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
 
   def index
-        @user = User.all
+        @user = User.where(gender: current_user.sexual_preference)
   end
 
   def new
@@ -36,16 +36,16 @@ class UsersController < ApplicationController
          # Tell the UserMailer to send a welcome email after save
          UserMailer.welcome_email(@user).deliver_now
          format.html {
-         if @user.sexual_preference == "m4f"
-           render 'm4f'
-         elsif @user.sexual_preference == "f4m"
-           render 'f4m'
-         elsif @user.sexual_preference == "m4m"
-           render 'm4m'
-         else @user.sexual_preference == "f4f"
-             render 'f4f'
-           end}
-         #format.html { redirect_to(users_path, notice: 'User was successfully created.') }
+        #  if @user.sexual_preference == "m4f"
+        #    render 'm4f'
+        #  elsif @user.sexual_preference == "f4m"
+        #    render 'f4m'
+        #  elsif @user.sexual_preference == "m4m"
+        #    render 'm4m'
+        #  else @user.sexual_preference == "f4f"
+        #      render 'f4f'
+        #    end}
+         format.html { redirect_to(users_path, notice: 'User was successfully created.') }
          format.json { render json: @user, status: :created, location: @user }
        else
          format.html { render action: 'new' }
@@ -98,6 +98,11 @@ def send_email
   UserMailer.send_message(params[:id],params[:message][:message]).deliver_now
 
   render html: 'You sent a message'
+end
+
+def wink
+  UserMailer.send_message(params[:id],"You've been winked at ...").deliver_now
+  render img
 end
 
 
