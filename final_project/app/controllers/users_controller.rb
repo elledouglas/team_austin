@@ -20,6 +20,9 @@ class UsersController < ApplicationController
 
   def show
    @user = User.find(params[:id])
+    @insta_feed = Instagram.client(:access_token => @user.instagram_token)
+
+
   #  debugger           #(<----uncomment to use byebug in server)
   end
 
@@ -32,15 +35,26 @@ class UsersController < ApplicationController
          flash[:success] = "User Profile Successfully Created"
          # Tell the UserMailer to send a welcome email after save
          UserMailer.welcome_email(@user).deliver_now
-
-         format.html { redirect_to(users_path, notice: 'User was successfully created.') }
+         format.html {
+         if @user.sexual_preference == "m4f"
+           render 'm4f'
+         elsif @user.sexual_preference == "f4m"
+           render 'f4m'
+         elsif @user.sexual_preference == "m4m"
+           render 'm4m'
+         else @user.sexual_preference == "f4f"
+             render 'f4f'
+           end}
+         #format.html { redirect_to(users_path, notice: 'User was successfully created.') }
          format.json { render json: @user, status: :created, location: @user }
        else
          format.html { render action: 'new' }
          format.json { render json: @user.errors, status: :unprocessable_entity }
        end
-     end
+
    end
+ end
+
 
    def edit
      @user = User.find(params[:id])  # Could technically delete this line because of the correct_user user method and filter? (line 5)
@@ -65,7 +79,18 @@ class UsersController < ApplicationController
 
   # Instagram callback in process
    def instagramadd
-     redirect_to Instagram.authorize_url(:redirect_uri => 'localhost:3000/users/instagram/callback')
+     redirect_to Instagram.authorize_url(:redirect_uri => "http://localhost:3000/users/oauth/callback")
+   end
+
+   def instagram_callback
+     response = Instagram.get_access_token(params[:code], :redirect_uri => "http://localhost:3000/users/oauth/callback")
+    if current_user
+      current_user.instagram_token = response.access_token
+    if current_user.save
+    redirect_to user_profile_path(current_user.id)
+  end
+    end
+
    end
 
   # User can send email to another user
@@ -87,7 +112,7 @@ end
   private
 
    def user_params
-     params.require(:user).permit(:full_name, :email, :password, :video, :image,:password_confirmation)
+     params.require(:user).permit(:full_name, :email, :password, :video, :image,:password_confirmation, :sexual_preference)
    end
 
 

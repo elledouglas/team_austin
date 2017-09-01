@@ -34,4 +34,7 @@
 </div>
 
 <p>Find me in app/views/users/edit.html.erb</p>
+<% if !@user.instagram_token.present? %>
 <a href="/users/instagram/add">Connect with Instagram</a>
+
+<%end %>

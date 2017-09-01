@@ -16,3 +16,7 @@
 <%= f.text_area :message %>
 <%= f.submit "send" %>
 <%end%>
+
+<%@insta_feed.user_recent_media.each do |img|%>
+<img src='<%= img.images.standard_resolution.url %>'>
+<% end %>
