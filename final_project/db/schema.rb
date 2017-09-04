@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20170901192937) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "video"
+    t.string "remember_digest"
     t.string "occupation"
     t.string "image"
-    t.string "remember_digest"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.string "instagram_token"

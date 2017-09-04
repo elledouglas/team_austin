@@ -35,7 +35,7 @@ class UsersController < ApplicationController
          flash[:success] = "User Profile Successfully Created"
          # Tell the UserMailer to send a welcome email after save
          UserMailer.welcome_email(@user).deliver_now
-         format.html {
+
         #  if @user.sexual_preference == "m4f"
         #    render 'm4f'
         #  elsif @user.sexual_preference == "f4m"
@@ -52,8 +52,8 @@ class UsersController < ApplicationController
          format.json { render json: @user.errors, status: :unprocessable_entity }
        end
 
-   end
- end
+     end
+  end
 
 
    def edit
@@ -68,6 +68,7 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+
   end
 
   def destroy
@@ -88,7 +89,7 @@ class UsersController < ApplicationController
       current_user.instagram_token = response.access_token
     if current_user.save
     redirect_to user_profile_path(current_user.id)
-  end
+    end
     end
 
    end
@@ -117,7 +118,7 @@ end
   private
 
    def user_params
-     params.require(:user).permit(:full_name, :email, :password, :video, :image,:password_confirmation, :sexual_preference)
+     params.require(:user).permit(:full_name, :age, :occupation, :email, :password, :video, :image,:password_confirmation, :sexual_preference)
    end
 
 
@@ -136,7 +137,6 @@ end
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
+
   end
-
-
 end
