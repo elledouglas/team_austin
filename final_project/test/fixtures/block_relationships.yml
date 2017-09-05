@@ -1,0 +1,11 @@
+one:
+  blocker: archer
+  blocked: michael
+
+two:
+  blocker: michael
+  blocked: malory
+
+three:
+  blocker: lana
+  blocked: michael

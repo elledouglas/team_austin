@@ -38,7 +38,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get destroy" do
-    # log_in_as(@user)
+    log_in_as(@user)
     get delete_user_profile_path(@user)
     assert_response :success
   end
@@ -60,7 +60,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@other_user)
     get edit_user_profile_path(@user)
 #    assert flash.empty? # I assert that the flash-messages hash is empty. Currently failing the test because apparently it isn't empty.
-    assert_redirected_to root_url
+    assert_redirected_to login_url
   end
 
   test "should redirect update when logged in as wrong user" do
@@ -68,14 +68,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     patch update_user_profile_path(@user), params: { user: { full_name: @user.full_name,
                                               email: @user.email } }
 #    assert flash.empty? # I assert that the flash-messages hash is empty. Currently failing the test because apparently it isn't empty.
-    assert_redirected_to root_url
+    assert_redirected_to login_url
   end
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'User.count' do
       delete user_profile_path(@user)
     end
-    assert_redirected_to root_url
+    assert_redirected_to login_url
   end
 
   test "should redirect destroy when logged in as different user" do
@@ -83,7 +83,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'User.count' do
       delete user_profile_path(@user)
     end
-    assert_redirected_to root_url
+    assert_redirected_to login_url
   end
+
+  test "should redirect blocking when not logged in" do
+    get blocking_user_path(@user)
+    assert_redirected_to login_url
+  end
+
+
 
 end

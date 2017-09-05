@@ -1,17 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
-  get 'password_resets/edit'
-
-  get 'sessions/new'
- get 'users/edit'
-
-get 'users/instagram/add' => 'users#instagramadd'
   root 'static_pages#home'
   get 'static_pages/home'
   get  '/about' => 'static_pages#about'
-
-  root 'users#index'
 
   get 'users', to: 'users#index'
   post 'users', to: 'users#create', as: 'create_user'
@@ -25,9 +16,26 @@ get 'users/instagram/add' => 'users#instagramadd'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  # Are these two redundant?
+  get 'sessions/new'
+  get 'users/edit'
+
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+
+  resources :block_relationships,       only: [:create, :destroy]
+
+  resources :users do
+    member do
+      get :blocking
+    end
+  end
+
+
+
   post '/users/sendmessage/:id' => 'users#send_email' ,as: 'sendemail'
 
-#
+  get 'users/instagram/add' => 'users#instagramadd'
+
 #   get "/users/instagram" do
 #     redirect Instagram.authorize_url(:redirect_uri => CALLBACK_URL, :scope => 'comments relationships likes')
 #   end
@@ -50,10 +58,5 @@ get 'users/instagram/add' => 'users#instagramadd'
 # get "/access_token" do
 #   'access_token: ' + session[:access_token]
 # end
-
-
-
-  resources :password_resets,     only: [:new, :create, :edit, :update]
-
 
 end

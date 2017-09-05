@@ -15,4 +15,7 @@
 
 <%= f.text_area :message %>
 <%= f.submit "send" %>
+
 <%end%>
+
+<%= render 'block_form' if logged_in? %>
