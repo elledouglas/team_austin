@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def index
         @user = User.where(gender: current_user.sexual_preference)
+
   end
 
   def new
@@ -118,7 +119,7 @@ end
   private
 
    def user_params
-     params.require(:user).permit(:full_name, :age, :occupation, :email, :password, :video, :image,:password_confirmation, :sexual_preference)
+     params.require(:user).permit(:full_name, :gender, :age, :occupation, :email, :password, :video, :image,:password_confirmation, :sexual_preference)
    end
 
 

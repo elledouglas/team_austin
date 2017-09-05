@@ -1,13 +1,21 @@
-<h1> All Profiles </h1>
 
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h4>PROFILES</h4>
+  <div class="container">
   <% @user.each do |user| %>
 
-<div>
-  <p><%= user.full_name%></p>
-  <p><%= user.age %></p>
-  <p><%= user.occupation %></p>
-  <a href="/users/<%=user.id%>"><img src="<%= user.image.url %>"/>
-</a>
-</div>
+    <a href="/users/<%=user.id%>"><img src="<%= user.image.url %>"/>
 
-<% end %>
+  <% end %>
+
+  <!-- <a href="#"><img src="male3.jpg" alt="picture 3" style="width:width;height:height;"></a>
+  <a href="#"><img src="girl1.jpeg" alt="girl1" style="width:width;height:height;"></a>
+  <a href="#"><img src="girl2.jpeg" alt="girl2" style="width:width;height:height;"></a>
+  <a href="#"><img src="girl3.jpeg" alt="girl3" style="width:width;height:height;"></a> -->
+
+</div>
+</body>
+</html>

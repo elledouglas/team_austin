@@ -151,20 +151,22 @@ top: 50%;
 left: 20%;
 transform: translateY(50%, -50%);
 width: 700px;
-height: 420px;
+height: 320px;
 border-radius: 5px;
 border: 10px;
 color: white;
 background-color: pink;
 opacity: 0.5;
-
 box-shadow: 10px 10px 15px rgba(0,0,0,.5);
 }
 .form-control{
+padding: 10px 5px;
+margin-top: 5%;
+text-align: center;
 background-color: white;
-opacity: 1.0;
 font-size: 14px;
 }
+
 
 /*HOMEPAGE*/
 #kiss {
@@ -265,6 +267,7 @@ align-items:center;
 padding:0 20px;
 text-align:center;
 box-sizing: none;
+;
 
 }
 #individual_profile_row p {
@@ -291,3 +294,28 @@ font-family: 'Permanent Marker', cursive;
 font-family: 'Special Elite', cursive;
 font-size: 30px;
 }
+
+.title_h1 {
+text-align: center;
+font-family: 'Homemade Apple', cursive;
+}
+
+/*ALL PROFILES*/
+
+.container {
+width: 100%;
+/*margin: auto;*/
+overFlow: hidden;
+
+height: 20%;
+}
+/*body {
+margin: 0;
+font-family: 'Lora', serif;
+font-size: 17px;
+line-height:1.6;
+color: #808080;
+background-color: #faffff;
+background-image: url("https://www.transparenttextures.com/patterns/shley-tree-1.png");
+
+}*/
