@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901161410) do
+ActiveRecord::Schema.define(version: 20170901192937) do
 
   create_table "block_relationships", force: :cascade do |t|
     t.integer "blocker_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170901161410) do
     t.string "video"
     t.string "occupation"
     t.string "image"
+    t.string "instagram_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

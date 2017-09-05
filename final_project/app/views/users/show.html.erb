@@ -1,17 +1,28 @@
+<head><link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Special+Elite" rel="stylesheet">
+</head>
+
 <h1>Individual User Profile</h1>
-
-
-<h1><%= @user.full_name %></h1>
+<div id="flower"></div>
+<div id="individual_profile_row">
 
 <%= link_to "Edit My Profile", edit_user_profile_path(@user) %>
 
 <p><%= @user.full_name %></p>
-<p><%= @user.age %></p>
-<p><%= @user.occupation %></p>
-<a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a>
+<h5><%= @user.age %></h5>
+<h5><%= @user.occupation %></h5>
 
-  <p>Send e-mail to someone@example.com</p>
+<a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a>
+</div>
+
+<div id="email_font">
+  <p>Don't be shy ... send me a note ;)</p>
+</div>
+
+<textarea rows="10" cols="210">
   <%=form_for :message, url: sendemail_path(@user.id) do |f| %>
+    <%= f.text_area :message %>
+    <%= f.submit "send" %>
+</textarea>
 
 <%= f.text_area :message %>
 <%= f.submit "send" %>

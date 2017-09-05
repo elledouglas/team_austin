@@ -7,18 +7,15 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   post 'users', to: 'users#create', as: 'create_user'
   get '/new', to: 'users#new', as: 'signup'
+
   get 'users/:id', to: 'users#show', as: 'user_profile'
   get 'users/:id/edit', to: 'users#edit', as: 'edit_user_profile'
   patch 'users/:id', to: 'users#update', as: 'update_user_profile'
   delete 'users/:id', to: 'users#destroy', as: 'delete_user_profile'
 
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
-
-  # Are these two redundant?
-  get 'sessions/new'
-  get 'users/edit'
+  get    '/login'   => 'sessions#new'
+  post   '/login'   => 'sessions#create'
+  delete '/logout'  => 'sessions#destroy'
 
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
@@ -30,11 +27,11 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'users/instagram/add' => 'users#instagramadd'
+  get '/users/oauth/callback' => 'users#instagram_callback'
 
 
   post '/users/sendmessage/:id' => 'users#send_email' ,as: 'sendemail'
-
-  get 'users/instagram/add' => 'users#instagramadd'
 
 #   get "/users/instagram" do
 #     redirect Instagram.authorize_url(:redirect_uri => CALLBACK_URL, :scope => 'comments relationships likes')
@@ -58,5 +55,7 @@ Rails.application.routes.draw do
 # get "/access_token" do
 #   'access_token: ' + session[:access_token]
 # end
+
+
 
 end

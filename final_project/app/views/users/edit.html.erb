@@ -1,8 +1,8 @@
 <% provide(:title, "Edit My Profile") %>
 <h1>Update your profile</h1>
-
-
-<div class="row">
+<div id="bark"></div>
+<div id="horse"></div>
+<div class="edit_row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user, url: "/users/#{@user.id}" do |f| %>
 
@@ -15,14 +15,25 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %> <br> <br>
 
+      <%= f.label :video %>
+      <%= f.file_field :video %><br>
+
+      <%= f.label :image %>
+      <%= f.file_field :image %><br>
+
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %> <br> <br>
 
       <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %> <br> <br>
+      <%= f.password_field :password_confirmation, class: 'form-control' %> <br>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %> <br>
+<br>
+      <% if !@user.instagram_token.present? %>
+      <a href="/users/instagram/add">Connect with Instagram</a>
 
+      <%end %> <br>
+      <br>
       <% if current_user?(@user) %>
         | <%= link_to "Delete My Account", delete_user_profile_path, method: :delete,
                                       data: { confirm: "Are you sure? This cannot be undone!" } %>
@@ -34,4 +45,3 @@
 </div>
 
 <p>Find me in app/views/users/edit.html.erb</p>
-<a href="/users/instagram/add">Connect with Instagram</a>
