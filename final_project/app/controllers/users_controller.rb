@@ -3,8 +3,11 @@ class UsersController < ApplicationController
     before_action :logged_in_user, only: [:index, :edit, :update]
 
   # \/ Requires that one be the user of the profile page one is trying to edit or destroy
-    before_action :correct_user,   only: [:edit, :update, :destroy]
-#
+    before_action :correct_user,   only: [:edit, :update, :destroy, :blocking]
+
+  # \/ Reqires that current_user not be blocked by show-page user in order to view their show page
+    before_action :user_not_blocked, only: :show
+
 # enable :sessions
     # For secured endpoints only
     #config.client_ips = '<Comma separated list of IPs>'
@@ -21,10 +24,8 @@ class UsersController < ApplicationController
 
   def show
    @user = User.find(params[:id])
-    @insta_feed = Instagram.client(:access_token => @user.instagram_token)
-
-
-  #  debugger           #(<----uncomment to use byebug in server)
+   @insta_feed = Instagram.client(:access_token => @user.instagram_token)
+   # debugger      #(<----uncomment to use byebug in server)
   end
 
   def create
@@ -78,6 +79,12 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def blocking
+    @title = "Blocking"
+    @user  = User.find(params[:id])
+    @users = @user.blocking
+    render 'show_block'
+  end
 
   # Instagram callback in process
    def instagramadd
@@ -118,19 +125,39 @@ end
 
   private
 
+
    def user_params
      params.require(:user).permit(:full_name, :gender, :age, :occupation, :email, :password, :video, :image,:password_confirmation, :sexual_preference)
    end
 
 
-   # \/ Before filters
+  # \/ Before filters
 
-# Confirms a logged-in user.
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(login_url) unless current_user?(@user)
+  end
+
+  # Confirms that current_user is not blocked by @user
+  def user_not_blocked
+    unless not_blocked?
+      flash[:danger] = "You have been blocked by #{@user.full_name}."
+      redirect_to users_path
+    end
+  end
+
+  def not_blocked?
+    @user = User.find(params[:id])
+    current_user != @user.blocking?(current_user)
+  end
+
+  # Confirms a logged-in user.
   def logged_in_user
     unless logged_in?
-      store_location  # This line uses a method in sessions_helper to store request location so that it may redirect them to that location upon login.
+      store_location # This line uses a method in sessions_helper to store request location so that it may redirect them to that location upon login.
       flash[:danger] = "Please log in."
-      redirect_to login_path
+      redirect_to login_url
     end
   end
 

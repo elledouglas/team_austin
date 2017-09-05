@@ -1,9 +1,21 @@
 class User < ApplicationRecord
+  has_many :active_block_relationships, class_name:  "BlockRelationship",
+                                foreign_key: "blocker_id",
+                                dependent:   :destroy
+  has_many :passive_block_relationships, class_name:  "BlockRelationship",
+                               foreign_key: "blocked_id",
+                               dependent:   :destroy
+  has_many :blocking, through: :active_block_relationships, source: :blocked
+  has_many :blockers, through: :passive_block_relationships, source: :blocker
+
+
+
   # attr_accessible :email, :password, :password_confirmation
   attr_accessor :remember_token, :activation_token, :reset_token
 
   # Validations for full_name
   validates :full_name,  presence: true, length: { maximum: 50 }
+
   # Validations for email
   before_save { email.downcase! }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -19,7 +31,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def index
-
+https://mail.google.com/mail/u/0/#b
   end
 
   def new
@@ -80,6 +92,23 @@ class User < ApplicationRecord
   # Sends password reset email.
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
+  end
+
+  # METHODS FOR USER BLOCKING FUNCTIONALITY
+
+  # blocks a user.
+  def block(other_user)
+    blocking << other_user
+  end
+
+  # Unblocks a user.
+  def unblock(other_user)
+    blocking.delete(other_user)
+  end
+
+  # Returns true if the current user is blocking the other user.
+  def blocking?(other_user)
+    blocking.include?(other_user)
   end
 
 

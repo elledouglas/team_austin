@@ -37,6 +37,12 @@ module SessionsHelper
   #   current_user ||= User.find_by(id: session[:user_id])
   # end
 
+  # It means "if a is undefined or falsey (false or nil), then evaluate b and set a to the result".
+
+
+
+
+
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
@@ -53,6 +59,8 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+
+
 
   # Redirects to stored location (or to the root_path. Per the tutorial it was
   # originally trying to redirect to the "default" path but that was throwing errors for 7 different tests).

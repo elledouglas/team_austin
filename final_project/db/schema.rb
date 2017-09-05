@@ -12,6 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20170901192937) do
 
+  create_table "block_relationships", force: :cascade do |t|
+    t.integer "blocker_id"
+    t.integer "blocked_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blocked_id"], name: "index_block_relationships_on_blocked_id"
+    t.index ["blocker_id", "blocked_id"], name: "index_block_relationships_on_blocker_id_and_blocked_id", unique: true
+    t.index ["blocker_id"], name: "index_block_relationships_on_blocker_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "full_name"
@@ -23,12 +33,12 @@ ActiveRecord::Schema.define(version: 20170901192937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "video"
     t.string "remember_digest"
-    t.string "occupation"
-    t.string "image"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "video"
+    t.string "occupation"
+    t.string "image"
     t.string "instagram_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

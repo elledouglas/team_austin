@@ -89,5 +89,18 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?(:remember, '')
   end
 
+  test "should block and unblock a user" do
+    michael  = users(:michael)
+    archer   = users(:archer)
+    assert_not michael.blocking?(archer)
+    michael.block(archer)
+    assert michael.blocking?(archer)
+    assert archer.blockers.include?(michael)
+    michael.unblock(archer)
+    assert_not michael.blocking?(archer)
+  end
+
+
+
 
 end
