@@ -31,7 +31,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def index
-https://mail.google.com/mail/u/0/#b
+
   end
 
   def new
