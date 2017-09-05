@@ -14,9 +14,25 @@ class UsersController < ApplicationController
 
 
   def index
-        @user = User.where(gender: current_user.sexual_preference)
-
+    if current_user.sexual_preference == "male" && current_user.gender == "male"
+        @user = User.where(gender: "male").where(sexual_preference: "male")
+    elsif  current_user.sexual_preference == "female" && current_user.gender == "female"
+            @user = User.where(gender: "female").where(sexual_preference: "female")
+   else
+      @user = User.where(gender: current_user.sexual_preference)
   end
+  if params[:search].present?
+    if params[:search][:age_from].present? && params[:search][:age_to].present?
+      @user = @user.where("age > ? and age < ?",params[:search][:age_from].to_i,params[:search][:age_to].to_i)
+    elsif params[:search][:children].present? && params[:search][:children] == "yes"
+      @user = @user.where.not(children: "")
+    elsif params[:search][:height_from].present? && params[:search][:height_to].present?
+      @user = @user.where("height > ? and height < ?",params[:search][:height_from], params[:search][:height_to])
+    elsif params[:search][:ethnicity].present?
+      @user = @user.where(ethnicity: params[:search][:ethnicity])
+    end
+  end
+end
 
   def new
       @user = User.new
@@ -127,7 +143,7 @@ end
 
 
    def user_params
-     params.require(:user).permit(:full_name, :gender, :age, :occupation, :email, :password, :video, :image,:password_confirmation, :sexual_preference)
+     params.require(:user).permit(:full_name, :gender, :age, :ethnicity, :children, :occupation, :email, :password, :video, :image,:password_confirmation, :sexual_preference)
    end
 
 

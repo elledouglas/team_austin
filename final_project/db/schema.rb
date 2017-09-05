@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901192937) do
+ActiveRecord::Schema.define(version: 20170905200146) do
 
   create_table "block_relationships", force: :cascade do |t|
     t.integer "blocker_id"
@@ -33,13 +33,15 @@ ActiveRecord::Schema.define(version: 20170901192937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "remember_digest"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
     t.string "video"
+    t.string "remember_digest"
     t.string "occupation"
     t.string "image"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.string "instagram_token"
+    t.string "ethnicity"
+    t.integer "height"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
