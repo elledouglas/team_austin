@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901192937) do
+ActiveRecord::Schema.define(version: 20170905201115) do
 
   create_table "block_relationships", force: :cascade do |t|
     t.integer "blocker_id"
@@ -33,14 +33,24 @@ ActiveRecord::Schema.define(version: 20170901192937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "remember_digest"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
     t.string "video"
+    t.string "remember_digest"
     t.string "occupation"
     t.string "image"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.string "instagram_token"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "winks", force: :cascade do |t|
+    t.integer "wink_sender_id"
+    t.integer "wink_recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wink_recipient_id"], name: "index_winks_on_wink_recipient_id"
+    t.index ["wink_sender_id", "wink_recipient_id"], name: "index_winks_on_wink_sender_id_and_wink_recipient_id"
+    t.index ["wink_sender_id"], name: "index_winks_on_wink_sender_id"
   end
 
 end

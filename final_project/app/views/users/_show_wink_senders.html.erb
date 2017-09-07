@@ -1,0 +1,13 @@
+<span><b>Winks Received:</b> <%= @user.wink_senders.count %></span>
+<section class="stats">
+  <% if @users.any? %>
+    <div class="user_pictures">
+      <% @users.each do |user| %>
+        <ul>
+          <!-- <li class="user_picture"><%= user.image %></li> -->
+          <li><a href="/users/<%=user.id%>"><%= user.full_name %></a></li>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+</section>

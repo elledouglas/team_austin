@@ -34,6 +34,10 @@ gem 'carrierwave'
 
 gem 'fog'
 
+# Generates fake data for testing, using it to seed DB
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

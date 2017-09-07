@@ -4,12 +4,12 @@ class BlockRelationshipsController < ApplicationController
   def create
     user = User.find(params[:blocked_id])
     current_user.block(user)
-    redirect_to edit_user_profile_path
+    redirect_to user_profile_path(@current_user.id)
   end
 
   def destroy
     user = BlockRelationship.find(params[:id]).blocked
     current_user.unblock(user)
-    redirect_to edit_user_profile_path
+    redirect_to user_profile_path(@current_user.id)
   end
 end

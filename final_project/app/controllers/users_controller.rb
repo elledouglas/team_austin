@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # \/ Requires user to be logged in before editing, updating, or viewing index
-    before_action :logged_in_user, only: [:index, :edit, :update]
+    before_action :logged_in_user, only: [:index, :edit, :update, :blocking]
 
   # \/ Requires that one be the user of the profile page one is trying to edit or destroy
     before_action :correct_user,   only: [:edit, :update, :destroy, :blocking]
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
 
   def index
-        @user = User.where(gender: current_user.sexual_preference)
+        @user = User.all
   end
 
   def new
@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def show
    @user = User.find(params[:id])
+   @users = @user.wink_senders
    @insta_feed = Instagram.client(:access_token => @user.instagram_token)
    # debugger      #(<----uncomment to use byebug in server)
   end
@@ -78,13 +79,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def blocking
-    @title = "Blocking"
-    @user  = User.find(params[:id])
-    @users = @user.blocking
-    render 'show_block'
-  end
-
   # Instagram callback in process
    def instagramadd
      redirect_to Instagram.authorize_url(:redirect_uri => "http://localhost:3000/users/oauth/callback")
@@ -136,18 +130,29 @@ end
     redirect_to(login_url) unless current_user?(@user)
   end
 
-  # Confirms that current_user is not blocked by @user
+  # Filter method that disallows access to show page owner if they have blocked current user.
   def user_not_blocked
-    unless not_blocked?
-      flash[:danger] = "You have been blocked by #{@user.full_name}."
+    @user = User.find(params[:id])
+    if @user.blocking?(current_user)
+    # unless not_blocked?
+      flash[:danger] = "You have been blocked by #{@user.full_name}"
       redirect_to users_path
     end
   end
 
-  def not_blocked?
-    @user = User.find(params[:id])
-    current_user != @user.blocking?(current_user)
+  # def blocking                # Don't remember what this was for.
+  #   @title = "Blocking"
+  #   @user  = User.find(params[:id])
+  #   @users = @user.blocking
+  # end
+
+  def winks_received
+    @user  = User.find(params[:id])
+    @users = @user.wink_senders
+    render 'show_wink_senders'
   end
+
+
 
   # Confirms a logged-in user.
   def logged_in_user
@@ -161,7 +166,6 @@ end
   # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-
+    redirect_to(login_url) unless current_user?(@user)
   end
 end

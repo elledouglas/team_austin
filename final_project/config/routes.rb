@@ -21,9 +21,13 @@ Rails.application.routes.draw do
 
   resources :block_relationships,       only: [:create, :destroy]
 
+  resources :winks,       only: [:create]
+
+
   resources :users do
     member do
       get :blocking
+      get :wink_senders, :wink_recipients
     end
   end
 
