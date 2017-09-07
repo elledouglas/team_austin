@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170905201115) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.string "instagram_token"
+    t.string "ethnicity"
+    t.integer "height"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

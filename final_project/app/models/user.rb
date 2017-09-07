@@ -34,19 +34,19 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   # Validations for password
-  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 3 }, allow_nil: true
   has_secure_password
 
   mount_uploader :video, VideoUploader
   mount_uploader :image, ImageUploader
 
-  # def index
-  #       @user = User.where(gender: current_user.sexual_preference).all
-  # end
-  #
-  # def new
-  #     @user = User.new
-  # end
+  def index
+        @user = User.where(gender: current_user.sexual_preference).all
+  end
+
+  def new
+      @user = User.new
+  end
 
   # Returns the hash digest of the given string.
   def User.digest(string)

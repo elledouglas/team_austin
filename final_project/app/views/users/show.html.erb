@@ -1,6 +1,8 @@
 <head><link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Special+Elite" rel="stylesheet">
 </head>
-
+<div class="title_h1">
+<h1>Individual User Profile</h1>
+</div>
 <div id="flower"></div>
 <div id="individual_profile_row">
 
@@ -9,10 +11,15 @@
 <% end %>
 
 <p><%= @user.full_name %></p>
-<h5><%= @user.age %></h5>
+<h5><%= @user.age%></h5>
 <h5><%= @user.occupation %></h5>
+<!-- <a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a> -->
+<div id="video">
+  <video width="320" height="240" controls>
+    <source src="<%=  @user.video.url%>">
+  </video>
+</div>
 
-<a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a>
 </div>
 
 <div id="email_font">
@@ -24,13 +31,18 @@
 
 <textarea rows="10" cols="210">
   <%=form_for :message, url: sendemail_path(@user.id) do |f| %>
-    <%= f.text_area :message %>
+    <%= f.text_area :message , row: 5 %>
     <%= f.submit "send" %>
-</textarea>
 
-<%= f.text_area :message %>
-<%= f.submit "send" %>
+
 
 <%end%>
+<% begin%>
+<%@insta_feed.user_recent_media.each do |img| %>
+<img src='<%=img.images.standard_resolution.url %>'>
+<% end %>
+<% rescue %>
+the instagram is not connected on this profile
+<%end %>
 
 <%= render 'block_form' if logged_in? %>

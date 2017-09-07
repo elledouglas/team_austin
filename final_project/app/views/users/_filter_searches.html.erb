@@ -1,0 +1,22 @@
+<%= form_for :search,url: search_path do |f| %>
+<h1> Search </h1>
+
+<%= f.label :age_from%>
+<%= f.text_field :age_from %>
+
+<%= f.label :age_to%>
+<%= f.text_field :age_to%>
+
+<%= f.label :children %>
+<%= f.select :children, ['no', 'yes']%>
+
+<%= f.label :height_from %>
+<%= f.select :height, ['152.40', '154.94','157.48','160.02','162.56','165.10','167.74','170.18','172.72','175.26','177.80','180.34','182.88','185.45','187.96','190.50','193.04','195.58']%>
+<br>
+<%= f.label :height_to %>
+<%= f.select :height, ['152.40', '154.94','157.48','160.02','162.56','165.10','167.74','170.18','172.72','175.26','177.80','180.34','182.88','185.45','187.96','190.50','193.04','195.58']%>
+
+<%= f.label :ethnicity %>
+<%= f.select :ethnicity, User.distinct(:ethnicity).pluck(:ethnicity)%>
+<%= f.submit "send" %>
+<% end %>

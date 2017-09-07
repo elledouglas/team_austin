@@ -1,16 +1,18 @@
 <% provide(:title, "Log in") %>
+<div class="title_h1">
 <h1>Log in</h1>
-<div id="rose">
 </div>
-<div class="row">
+<div id="rose">
+
+  <div class="row">
   <div class="col-md-6 col-md-offset-3">
+
     <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %></p>
+      <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password %>
-      <%= link_to "(forgot password)", new_password_reset_path %>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :remember_me, class: "checkbox inline" do %>
@@ -19,8 +21,8 @@
       <% end %>
 
       <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
-
+    <% end %><br>
+    <%= link_to "Forgot password?", new_password_reset_path %>
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 
   </div>

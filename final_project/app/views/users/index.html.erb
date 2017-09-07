@@ -1,13 +1,18 @@
-<h1> All Profiles </h1>
 
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h4>PROFILES</h4>
+  <div class="title_h1">
+  <%= render 'filter_searches' %>
+</div>
+  <div class="container">
   <% @user.each do |user| %>
 
-<div>
-  <p><%= user.full_name%></p>
-  <p><%= user.age %></p>
-  <p><%= user.occupation %></p>
-  <a href="/users/<%=user.id%>"><img src="<%= user.image.url %>"/>
-</a>
-</div>
+  <a href="/users/<%=user.id%>"><video src="<%= user.video.url %>"<video width="320" height="240" controls>/>
 
-<% end %>
+  <% end %>
+</div>
+</body>
+</html>
