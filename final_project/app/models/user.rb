@@ -1,16 +1,26 @@
 class User < ApplicationRecord
+  has_many :active_winks, class_name:  "Wink",
+                                  foreign_key: "wink_sender_id",
+                                  dependent:   :destroy
+  has_many :passive_winks, class_name:  "Wink",
+                                  foreign_key: "wink_recipient_id",
+                                  dependent:   :destroy
+
   has_many :active_block_relationships, class_name:  "BlockRelationship",
                                 foreign_key: "blocker_id",
                                 dependent:   :destroy
   has_many :passive_block_relationships, class_name:  "BlockRelationship",
                                foreign_key: "blocked_id",
                                dependent:   :destroy
+
   has_many :blocking, through: :active_block_relationships, source: :blocked
   has_many :blockers, through: :passive_block_relationships, source: :blocker
 
+  has_many :wink_recipients, through: :active_winks
+  has_many :wink_senders, through: :passive_winks
+ 
 
-
-  # attr_accessible :email, :password, :password_confirmation
+    # attr_accessible :email, :password, :password_confirmation
   attr_accessor :remember_token, :activation_token, :reset_token
 
   # Validations for full_name
@@ -30,13 +40,13 @@ class User < ApplicationRecord
   mount_uploader :video, VideoUploader
   mount_uploader :image, ImageUploader
 
-  def index
-https://mail.google.com/mail/u/0/#b
-  end
-
-  def new
-      @user = User.new
-  end
+  # def index
+  #       @user = User.where(gender: current_user.sexual_preference).all
+  # end
+  #
+  # def new
+  #     @user = User.new
+  # end
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -109,6 +119,18 @@ https://mail.google.com/mail/u/0/#b
   # Returns true if the current user is blocking the other user.
   def blocking?(other_user)
     blocking.include?(other_user)
+  end
+
+  # METHODS FOR USER WINKING FUNCTIONALITY
+
+  # winks at a user.
+  def wink_at(other_user)
+    wink_recipients << other_user
+  end
+
+  # Returns true if the current user has winked at the other user.
+  def winked_at?(other_user)
+    wink_recipients.include?(other_user)
   end
 
 

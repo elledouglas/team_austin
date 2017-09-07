@@ -1,11 +1,12 @@
 <head><link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Special+Elite" rel="stylesheet">
 </head>
 
-<h1>Individual User Profile</h1>
 <div id="flower"></div>
 <div id="individual_profile_row">
 
-<%= link_to "Edit My Profile", edit_user_profile_path(@user) %>
+<% if current_user?(@user) # We do not want to display this link unless current user is visiting their own show page %>
+  <%= link_to "Edit My Profile", edit_user_profile_path(@user) %>
+<% end %>
 
 <p><%= @user.full_name %></p>
 <h5><%= @user.age %></h5>
@@ -16,7 +17,10 @@
 
 <div id="email_font">
   <p>Don't be shy ... send me a note ;)</p>
+  <%= render 'sendwink' if logged_in? && !current_user?(@user) %>
 </div>
+
+<%= render 'show_wink_senders' if logged_in? && current_user?(@user) %>
 
 <textarea rows="10" cols="210">
   <%=form_for :message, url: sendemail_path(@user.id) do |f| %>

@@ -78,7 +78,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "should redirect destroy when logged in as different user" do
+  test "should redirect destroy when logged in as wrong user" do
     log_in_as(@other_user)
     assert_no_difference 'User.count' do
       delete user_profile_path(@user)
@@ -86,11 +86,23 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "should redirect blocking when not logged in" do
-    get blocking_user_path(@user)
-    assert_redirected_to login_url
-  end
+  # test "should redirect blocking when not logged in" do
+  #   log_in_as(@other_user)
+  #   post block_relationships_path(@user), params: { blocked_id: @user.id }
+  #   assert_redirected_to login_url
+  #
+  # end
 
+  #
+  # test "should redirect blocking when not logged in" do
+  #    get blocking_user_path(@user)
+  #    assert_redirected_to login_url
+  #  end
+  # 
+  # test "should redirect winks_received when not logged in" do
+  #   get wink_senders(@user)
+  #   assert_redirected_to login_url
+  # end
 
 
 end
