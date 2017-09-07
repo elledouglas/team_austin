@@ -4,19 +4,15 @@
 <body>
 
   <h4>PROFILES</h4>
+  <div class="title_h1">
   <%= render 'filter_searches' %>
+</div>
   <div class="container">
   <% @user.each do |user| %>
 
-    <a href="/users/<%=user.id%>"><img src="<%= user.image.url %>"/>
+  <a href="/users/<%=user.id%>"><video src="<%= user.video.url %>"<video width="320" height="240" controls>/>
 
   <% end %>
-
-  <!-- <a href="#"><img src="male3.jpg" alt="picture 3" style="width:width;height:height;"></a>
-  <a href="#"><img src="girl1.jpeg" alt="girl1" style="width:width;height:height;"></a>
-  <a href="#"><img src="girl2.jpeg" alt="girl2" style="width:width;height:height;"></a>
-  <a href="#"><img src="girl3.jpeg" alt="girl3" style="width:width;height:height;"></a> -->
-
 </div>
 </body>
 </html>

@@ -9,10 +9,15 @@
 <%= link_to "Edit My Profile", edit_user_profile_path(@user) %>
 
 <p><%= @user.full_name %></p>
-<h5><%= @user.age %></h5>
+<h5><%= @user.age%></h5>
 <h5><%= @user.occupation %></h5>
+<!-- <a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a> -->
+<div id="video">
+  <video width="320" height="240" controls>
+    <source src="<%=  @user.video.url%>">
+  </video>
+</div>
 
-<a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a>
 </div>
 
 <div id="email_font">
@@ -31,7 +36,7 @@
 <img src='<%=img.images.standard_resolution.url %>'>
 <% end %>
 <% rescue %>
-the instagram is not connected on this profile 
+the instagram is not connected on this profile
 <%end %>
 
 <%= render 'block_form' if logged_in? %>

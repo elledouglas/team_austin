@@ -84,8 +84,11 @@ box-sizing: border-box;
  width: 100%;
  }
 
- #branding h1 {
- padding-left: 40%;
+ #branding {
+ padding-left: 5%;
+ font-family: 'Cinzel', serif;
+ font-size: 15px;
+
  }
 
  h2 {
@@ -112,7 +115,7 @@ box-sizing: border-box;
  }
 
  /*ABOUT PAGE */
- #video{
+ #video_img{
  background-image:url('video.jpg');
  height: 80vh;
  background-size: cover;
@@ -160,11 +163,14 @@ opacity: 0.5;
 box-shadow: 10px 10px 15px rgba(0,0,0,.5);
 }
 .form-control{
-padding: 10px 5px;
-margin-top: 5%;
+padding: 5px 7px;
+margin-top: 2%;
 text-align: center;
 background-color: white;
 font-size: 14px;
+opacity: 1.0;
+text-decoration: none;
+
 }
 
 
@@ -188,6 +194,7 @@ position: absolute;
 top: 50%;
 left: 20%;
 transform: translateY(50%, -50%);
+margin-top: -1%;
 width: 700px;
 height: 420px;
 border-radius: 5px;
@@ -224,7 +231,7 @@ justify-content: center;
 align-items:center;
 padding:0 20px;
 text-align:center;
-opacity: 0.6;
+
 }
 
 .edit_row {
@@ -237,8 +244,12 @@ height: 420px;
 border-radius: 5px;
 border: 10px;
 color: white;
-background-color: rgba(0,0,0,.5);
+background-color: rgba(0,0,10,.3);
 box-shadow: 10px 10px 15px rgba(0,0,0,.5);
+}
+.edit_row a {
+text-decoration: none;
+color: yellow;
 }
 #individual_profile_row{
 position: absolute;
@@ -309,13 +320,32 @@ overFlow: hidden;
 
 height: 20%;
 }
-/*body {
+body {
 margin: 0;
 font-family: 'Lora', serif;
-font-size: 17px;
+/*font-size: 17px;
 line-height:1.6;
 color: #808080;
-background-color: #faffff;
-background-image: url("https://www.transparenttextures.com/patterns/shley-tree-1.png");
+background-color: #faffff;*/
+/*background-image: url("https://www.transparenttextures.com/patterns/shley-tree-1.png");*/
 
-}*/
+}
+.center_jumbotron {
+color: white;
+height: 80px;
+width: 400px;
+border: 2px solid white ;
+
+}
+h2 {
+margin-top: 150px;
+font-size: 36px;
+}
+.center_jumbotron a {
+color: red;
+font-size: 20px;
+text-decoration: none;
+height: 800px;
+opacity: 0.6;
+
+}

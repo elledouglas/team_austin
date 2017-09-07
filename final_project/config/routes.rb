@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get  '/about' => 'static_pages#about'
 
   get 'users', to: 'users#index'
+
+
   post 'users/create', to: 'users#create', as: 'create_user'
   post 'users', to: 'users#index', as: 'search'
   get '/new', to: 'users#new', as: 'signup'

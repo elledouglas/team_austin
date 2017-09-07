@@ -24,7 +24,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   # Validations for password
-  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 3 }, allow_nil: true
   has_secure_password
 
   mount_uploader :video, VideoUploader
