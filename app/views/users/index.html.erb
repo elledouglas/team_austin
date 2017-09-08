@@ -8,15 +8,11 @@
   <%= render 'filter_searches' %>
 </div>
   <div class="container">
-  <% @users.each do |user| %>
+    <% @user.each do |user| %>
 
-  <a href="/users/<%=user.id%>">
-    <video width="320" height="240" controls>
-      <source src="<%=  user.video.url%>">
-    </video>
-  </a>
+    <a href="/users/<%=user.id%>"><video src="<%= user.video.url %>"<video width="320" height="240" controls>/>
 
-  <% end %>
+    <% end %>
 </div>
 </body>
 </html>
