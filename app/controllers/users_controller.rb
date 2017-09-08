@@ -54,7 +54,7 @@ end
          log_in @user
          flash[:success] = "User Profile Successfully Created"
          # Tell the UserMailer to send a welcome email after save
-         UserMailer.welcome_email(@user).deliver_now
+        #  UserMailer.welcome_email(@user).deliver_now
 
         #  if @user.sexual_preference == "m4f"
         #    render 'm4f'
