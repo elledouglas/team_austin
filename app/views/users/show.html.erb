@@ -16,7 +16,7 @@
 <!-- <a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a> -->
 <div id="video">
   <video width="320" height="240" controls>
-    <source src="<%=  @user.video.url%>">
+    <source src=<%=@user.video.url%>>
   </video>
 </div>
 
@@ -42,7 +42,7 @@
 <img src='<%=img.images.standard_resolution.url %>'>
 <% end %>
 <% rescue %>
-the instagram is not connected on this profile
+Instagram is not connected on this profile
 <%end %>
 
-<%= render 'block_form' if logged_in? %>
+# <%= render 'block_form' if logged_in? %>
