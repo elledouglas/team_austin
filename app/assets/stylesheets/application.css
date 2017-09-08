@@ -278,9 +278,8 @@ align-items:center;
 padding:0 20px;
 text-align:center;
 box-sizing: none;
-;
-
 }
+
 #individual_profile_row p {
 font-family: 'Permanent Marker', cursive;
 font-family: 'Special Elite', cursive;
@@ -334,9 +333,11 @@ font-size: 30px;
 .user_avatars {
   overflow: auto;
   margin-top: 10px;
+
   .gravatar {
     margin: 1px 1px;
   }
+
   a {
     padding: 0;
   }
@@ -344,6 +345,7 @@ font-size: 30px;
 
 .users.wink_at {
   padding: 0;
+}
 
 .title_h1 {
 text-align: center;
