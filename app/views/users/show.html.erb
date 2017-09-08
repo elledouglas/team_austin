@@ -29,9 +29,9 @@
 
 <%= render 'show_wink_senders' if logged_in? && current_user?(@user) %>
 
-<textarea rows="10" cols="210">
+
   <%=form_for :message, url: sendemail_path(@user.id) do |f| %>
-    <%= f.text_area :message , row: 5 %>
+    <%= f.text_area :message , row: 10, cols: 210 %>
     <%= f.submit "send" %>
 
 
