@@ -10,7 +10,11 @@
   <div class="container">
   <% @user.each do |user| %>
 
-  <a href="/users/<%=user.id%>"><video src="<%= user.video.url %>"<video width="320" height="240" controls>/>
+  <a href="/users/<%=user.id%>">
+    <video width="320" height="240" controls>
+      <source src="<%=  user.video.url%>">
+    </video>
+  </a>
 
   <% end %>
 </div>
