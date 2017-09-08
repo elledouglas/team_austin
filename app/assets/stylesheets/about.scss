@@ -1,0 +1,18 @@
+/*ABOUT PAGE */
+#video_img{
+background-image: image-url("video.jpg");
+height: 80vh;
+background-size: cover;
+background-position: center;
+flex-direction:column;
+justify-content: center;
+align-items:center;
+padding:0px;
+
+}
+#about_text p{
+padding-top: 6vh;
+width: 30%;
+float: right;
+padding-right: 15px;
+}

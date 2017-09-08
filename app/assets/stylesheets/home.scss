@@ -1,0 +1,29 @@
+/*HOMEPAGE*/
+#kiss {
+background-image: image-url("kiss.jpg");
+height: 100vh;
+/*#viewportheight*/
+background-size: cover;
+background-position: center;
+display: flex;
+flex-direction:column;
+justify-content: center;
+align-items:center;
+padding:0 20px;
+text-align:center;
+}
+
+.sign_up {
+position: absolute;
+top: 50%;
+left: 20%;
+transform: translateY(50%, -50%);
+margin-top: -1%;
+width: 700px;
+height: 420px;
+border-radius: 5px;
+border: 10px;
+color: white;
+background-color: rgba(0,0,0,.5);
+box-shadow: 10px 10px 15px rgba(0,0,0,.5);
+}

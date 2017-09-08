@@ -1,0 +1,100 @@
+/*SIGN UP*/
+#forest {
+background-image: image-url("forest.jpeg");
+height: 100vh;
+/*#viewportheight*/
+background-size: cover;
+background-position: center;
+display: flex;
+flex-direction:column;
+justify-content: center;
+align-items:center;
+padding:0 20px;
+text-align:center;
+}
+
+#horse {
+background-image: image-url("horse.jpeg");
+height: 100vh;
+/*#viewportheight*/
+background-size: cover;
+background-position: center;
+display: flex;
+flex-direction:column;
+justify-content: center;
+align-items:center;
+padding:0 20px;
+text-align:center;
+
+}
+
+.edit_row {
+position: absolute;
+top: 50%;
+left: 20%;
+transform: translateY(50%, -50%);
+width: 700px;
+height: 420px;
+border-radius: 5px;
+border: 10px;
+color: white;
+background-color: rgba(0,0,10,.3);
+box-shadow: 10px 10px 15px rgba(0,0,0,.5);
+}
+.edit_row a {
+text-decoration: none;
+color: yellow;
+}
+#individual_profile_row{
+position: absolute;
+top: 50%;
+left: 25%;
+transform: translateY(50%, -50%);
+width: 700px;
+height: 420px;
+border-radius: 5px;
+border: 10px;
+color: red;
+box-shadow: 10px 10px 15px rgba(0,0,0,.5);
+text-align: center;
+}
+
+#flower {
+background-image: image-url("flower.jpeg");
+height: 100vh;
+/*#viewportheight*/
+background-size: cover;
+background-position: center;
+display: flex;
+flex-direction:column;
+justify-content: center;
+align-items:center;
+padding:0 20px;
+text-align:center;
+box-sizing: none;
+}
+
+#individual_profile_row p {
+font-family: 'Permanent Marker', cursive;
+font-family: 'Special Elite', cursive;
+font-size: 20px;
+text: uppercase;
+}
+
+#insta {
+
+width: 100%;
+margin-top: 10%;}
+
+#insta img {
+width:30%;
+height:30vh;
+padding-left: 1%;
+
+
+}
+#email_font p{
+font-family: 'Permanent Marker', cursive;
+font-family: 'Special Elite', cursive;
+font-size: 30px;
+}
