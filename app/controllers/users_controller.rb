@@ -15,22 +15,22 @@ class UsersController < ApplicationController
 
   def index
     if current_user.sexual_preference == "male" && current_user.gender == "male"
-        @user = User.where(gender: "male").where(sexual_preference: "male")
+        @users = User.where(gender: "male").where(sexual_preference: "male")
     elsif  current_user.sexual_preference == "female" && current_user.gender == "female"
-            @user = User.where(gender: "female").where(sexual_preference: "female")
+            @users = User.where(gender: "female").where(sexual_preference: "female")
    else
-      @user = User.where(gender: current_user.sexual_preference)
+      @users = User.where(gender: current_user.sexual_preference)
   end
 
   if params[:search].present?
     if params[:search][:age_from].present? && params[:search][:age_to].present?
-      @user = @user.where("age > ? and age < ?",params[:search][:age_from].to_i,params[:search][:age_to].to_i)
+      @users = @users.where("age > ? and age < ?",params[:search][:age_from].to_i,params[:search][:age_to].to_i)
     elsif params[:search][:children].present? && params[:search][:children] == "yes"
-      @user = @user.where.not(children: "")
+      @users = @users.where.not(children: "")
     elsif params[:search][:height_from].present? && params[:search][:height_to].present?
-      @user = @user.where("height > ? and height < ?",params[:search][:height_from], params[:search][:height_to])
+      @users = @users.where("height > ? and height < ?",params[:search][:height_from], params[:search][:height_to])
     elsif params[:search][:ethnicity].present?
-      @user = @user.where(ethnicity: params[:search][:ethnicity])
+      @users = @users.where(ethnicity: params[:search][:ethnicity])
     end
   end
 end
