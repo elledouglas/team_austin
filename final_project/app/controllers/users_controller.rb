@@ -96,8 +96,6 @@ end
     redirect_to users_url
   end
 
-<<<<<<< HEAD
-=======
   # def blocking
   #   @title = "Blocking"
   #   @user  = User.find(params[:id])
@@ -105,7 +103,6 @@ end
   #   render 'show_block'
   # end
 
->>>>>>> 387c926bf69d45f07a9f14ac574963733efe3767
   # Instagram callback in process
    def instagramadd
      redirect_to Instagram.authorize_url(:redirect_uri => "http://localhost:3000/users/oauth/callback")
@@ -159,7 +156,6 @@ end
     redirect_to(login_url) unless current_user?(@user)
   end
 
-<<<<<<< HEAD
   # Filter method that disallows access to show page owner if they have blocked current user.
   def user_not_blocked
     @user = User.find(params[:id])
@@ -181,7 +177,7 @@ end
     @users = @user.wink_senders
     render 'show_wink_senders'
   end
-=======
+
   # Confirms that current_user is not blocked by @user
   # def user_not_blocked
   #   unless not_blocked?
@@ -194,7 +190,6 @@ end
   #   @user = User.find(params[:id])
   #   current_user != @user.blocking?(current_user)
   # end
->>>>>>> 387c926bf69d45f07a9f14ac574963733efe3767
 
 
 
@@ -213,12 +208,10 @@ end
   #   redirect_to(root_url) unless current_user?(@user)
   #
 
-<<<<<<< HEAD
   # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])
     redirect_to(login_url) unless current_user?(@user)
   end
-=======
->>>>>>> 387c926bf69d45f07a9f14ac574963733efe3767
+
 end

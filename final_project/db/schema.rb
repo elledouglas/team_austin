@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170905201115) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "block_relationships", force: :cascade do |t|
     t.integer "blocker_id"
     t.integer "blocked_id"

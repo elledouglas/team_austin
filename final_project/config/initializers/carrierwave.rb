@@ -23,7 +23,7 @@ config.fog_credentials = {
     :google_storage_secret_access_key => ENV['GOOGLE_PASSWORD']
   }
 
-  # For testing, upload files to local `tmp` folder.
+# For testing, upload files to local `tmp` folder.
   if Rails.env.test? || Rails.env.cucumber?
     # || Rails.env.development?
     config.storage = :file
