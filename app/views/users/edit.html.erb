@@ -11,19 +11,25 @@
       <%= render 'shared/error_messages' %> <br>
 
       <%= f.label :full_name %>
-      <%= f.text_field :full_name, class: 'form-control' %> <br> <br>
+      <%= f.text_field :full_name, :placerholder 'change name here', class: 'form-control' %> <br> <br>
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %> <br> <br>
+      <%= f.email_field :email, :placerholder 'change email here', class: 'form-control' %> <br> <br>
+
+      <%= f.label :ethnicity%>
+      <%= f.text_field :ethnicity, :placerholder 'add ethnicity',%><br>
+
+      <%= f.label :children %>
+      <%= f.text_field :children, :placerholder 'add children'%><br>
 
       <%= f.label :video %>
-      <%= f.file_field :video %><br>
+      <%= f.file_field :video, :placerholder 'change or add video '%><br>
 
-      <%= f.label :image %>
-      <%= f.file_field :image %><br>
+      <!-- <%= f.label :image %>
+      <%= f.file_field :image %><br> -->
 
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %> <br> <br>
+      <%= f.password_field :password, :placerholder 'add new password', class: 'form-control' %> <br> <br>
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %> <br>
@@ -31,7 +37,7 @@
       <%= f.submit "Save changes", class: "btn btn-primary" %> <br>
 <br>
       <% if !@user.instagram_token.present? %>
-      <a href="/users/instagram/add">Connect with Instagram</a>
+      <a href="/users/instagram/add">Connect your Instagram!</a>
 
       <%end %> <br>
       <br>
