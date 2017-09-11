@@ -24,7 +24,7 @@ config.fog_credentials = {
   }
 
 # For testing, upload files to local `tmp` folder.
-  if Rails.env.test? || Rails.env.cucumber?
+  if Rails.env.test? || Rails.env.cucumber? || Rails.env.development?
     # || Rails.env.development?
     config.storage = :file
     config.enable_processing = false

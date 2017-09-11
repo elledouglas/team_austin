@@ -1,48 +1,49 @@
 <head><link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Special+Elite" rel="stylesheet">
 </head>
-<div class="title_h1">
-<h1>Individual User Profile</h1>
-</div>
+  <div class="title_h1">
+    <h1>Individual User Profile</h1>
+  </div>
+
 <div id="flower"></div>
-<div id="individual_profile_row">
 
-<% if current_user?(@user) # We do not want to display this link unless current user is visiting their own show page %>
-  <%= link_to "Edit My Profile", edit_user_profile_path(@user) %>
-<% end %>
+  <div id="individual_profile_row">
+  <% if current_user?(@user) # We do not want to display this link unless current user is visiting their own show page %>
+    <%= link_to "Edit My Profile", edit_user_profile_path(@user) %>
+  <% end %>
 
-<p><%= @user.full_name %></p>
-<h5><%= @user.age%></h5>
-<h5><%= @user.occupation %></h5>
+    <p><%= @user.full_name %></p>
+    <h5><%= @user.age%></h5>
+    <h5><%= @user.occupation %></h5>
 <!-- <a href="/users/show/<%=@user.id%>"><img src="<%= @user.image.url %>"></a> -->
-<div id="video">
-  <video width="320" height="240" controls>
-    <source src="<%=  @user.video.url%>">
-  </video>
-</div>
+
+  <div id="video">
+    <video width="320" height="240" controls>
+    <source src="<%= @user.video.url%>">
+    </video>
+  </div>
 
 </div>
 
-<div id="email_font">
-  <p>Don't be shy ... send me a note ;)</p>
-  <%= render 'sendwink' if logged_in? && !current_user?(@user) %>
-</div>
+  <div id="email_font">
+    <p>Don't be shy ... send me a note ;)</p>
+    <%= render 'sendwink' if logged_in? && !current_user?(@user) %>
+  </div>
 
-<%= render 'show_wink_senders' if logged_in? && current_user?(@user) %>
+
+  <%= render 'show_wink_senders' if logged_in? && current_user?(@user) %>
 
 
   <%=form_for :message, url: sendemail_path(@user.id) do |f| %>
     <%= f.text_area :message , row: 10, cols: 210 %>
     <%= f.submit "send" %>
 
-
-
-<%end%>
-<% begin%>
-<%@insta_feed.user_recent_media.each do |img| %>
-<img src='<%=img.images.standard_resolution.url %>'>
-<% end %>
-<% rescue %>
-Instagram is not connected on this profile
-<%end %>
+    <%end%>
+    <% begin%>
+      <%@insta_feed.user_recent_media.each do |img| %>
+      <img src='<%=img.images.standard_resolution.url %>'>
+      <% end %>
+      <% rescue %>
+      Instagram is not connected on this profile
+      <%end %>
 
 <!-- <%= render 'block_form' if logged_in? %> -->
