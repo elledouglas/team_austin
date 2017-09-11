@@ -8,7 +8,7 @@
   <div class="edit_row">
 
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @user, url: "/users/#{@user.id}" do |f| %>
+    <%= form_for @user, url: "/users/#{@user.id}/edit" do |f| %>
 
       <%= render 'shared/error_messages' %> <br>
 
@@ -38,7 +38,7 @@
 
       <%= f.submit "Save changes", class: "btn btn-primary" %> <br>
       <br>
-        <% end %>
+
       <% if !@user.instagram_token.present? %>
         <a href="/users/instagram/add">Connect your Instagram!</a>
 
@@ -48,7 +48,7 @@
       <%= link_to "Delete My Account", delete_user_profile_path, method: :delete,
                                       data: { confirm: "Are you sure? This cannot be undone!" } %>
       <% end %>
-
+    <% end %>
 
   </div>
 </div>
