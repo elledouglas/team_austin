@@ -3,7 +3,7 @@ class Wink < ApplicationRecord
   belongs_to :wink_recipient, class_name: "User"
   validates :wink_sender_id, presence: true
   validates :wink_recipient_id, presence: true
-  # validate :one_wink_a_day, on: :create
+  validate :one_wink_a_day, on: :create
 
   # validates_uniqueness_of :wink_sender_id, scope: [:wink_recipient_id, -> { where(created_at: past_24_hours) } ]
 

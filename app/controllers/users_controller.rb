@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     before_action :correct_user,   only: [:edit, :update, :destroy, :blocking]
 
   # \/ Reqires that current_user not be blocked by show-page user in order to view their show page
-    # before_action :user_not_blocked, only: :show
+    before_action :user_not_blocked, only: :show
 
 # enable :sessions
     # For secured endpoints only
@@ -17,9 +17,9 @@ class UsersController < ApplicationController
     if current_user.sexual_preference == "male" && current_user.gender == "male"
         @user = User.where(gender: "male").where(sexual_preference: "male")
     elsif  current_user.sexual_preference == "female" && current_user.gender == "female"
-            @user = User.where(gender: "female").where(sexual_preference: "female")
-   else
-      @user = User.where(gender: current_user.sexual_preference)
+        @user = User.where(gender: "female").where(sexual_preference: "female")
+    else
+        @user = User.where(gender: current_user.sexual_preference)
   end
 
   if params[:search].present?
@@ -44,7 +44,6 @@ end
    @user = User.find(params[:id])
    @users = @user.wink_senders
    @insta_feed = Instagram.client(:access_token => @user.instagram_token)
-  #  # debugger      #(<----uncomment to use byebug in server)
   end
 
   def create
@@ -54,7 +53,7 @@ end
          log_in @user
          flash[:success] = "User Profile Successfully Created"
          # Tell the UserMailer to send a welcome email after save
-        #  UserMailer.welcome_email(@user).deliver_now
+         UserMailer.welcome_email(@user).deliver_now
 
         #  if @user.sexual_preference == "m4f"
         #    render 'm4f'
@@ -119,10 +118,9 @@ end
 
    end
 
-  # User can send email to another user
+# User can send email to another user
 def send_email
   UserMailer.send_message(params[:id],params[:message][:message]).deliver_now
-
   render html: 'You sent a message'
 end
 
@@ -131,14 +129,6 @@ def wink
   render img
 end
 
-
-
-#   html = "<h1>#{user.username}'s recent photos</h1>"
-#   for media_item in client.user_recent_media
-#     html << "<img src='#{media_item.images.thumbnail.url}'>"
-#   end
-#   html
-# end
 
   private
 
@@ -149,12 +139,6 @@ end
 
 
   # \/ Before filters
-
-  # Confirms the correct user.
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(login_url) unless current_user?(@user)
-  end
 
   # Filter method that disallows access to show page owner if they have blocked current user.
   def user_not_blocked
@@ -179,39 +163,33 @@ end
   end
 
   # Confirms that current_user is not blocked by @user
-  # def user_not_blocked
-  #   unless not_blocked?
-  #     flash[:danger] = "You have been blocked by #{@user.full_name}."
-  #     redirect_to users_path
-  #   end
-  # end
-  #
-  # def not_blocked?
-  #   @user = User.find(params[:id])
-  #   current_user != @user.blocking?(current_user)
-  # end
+  def user_not_blocked
+    unless not_blocked?
+      flash[:danger] = "You have been blocked by #{@user.full_name}."
+      redirect_to users_path
+    end
+  end
+
+  def not_blocked?
+    @user = User.find(params[:id])
+    current_user != @user.blocking?(current_user)
+  end
 
 
 
   # Confirms a logged-in user.
-  # def logged_in_user
-  #   unless logged_in?
-  #     store_location # This line uses a method in sessions_helper to store request location so that it may redirect them to that location upon login.
-  #     flash[:danger] = "Please log in."
-  #     redirect_to login_url
-  #   end
-  # end
-  #
-  # # Confirms the correct user.
-  # def correct_user
-  #   @user = User.find(params[:id])
-  #   redirect_to(root_url) unless current_user?(@user)
-  #
+  def logged_in_user
+    unless logged_in?
+      store_location # This line uses a method in sessions_helper to store request location so that it may redirect them to that location upon login.
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
 
   # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(login_url) unless current_user?(@user)
+    redirect_to(root_url) unless current_user?(@user)
   end
 
 end
