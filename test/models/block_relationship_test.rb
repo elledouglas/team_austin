@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RelationshipTest < ActiveSupport::TestCase
+class BlockRelationshipTest < ActiveSupport::TestCase
 
   def setup
     @block_relationship = BlockRelationship.new(blocker_id: users(:michael).id,

@@ -4,10 +4,11 @@ class WinkTest < ActiveSupport::TestCase
 
     def setup
       @wink = Wink.new(wink_sender_id: users(:michael).id,
-                       wink_recipient_id: users(:archer).id)
+                       wink_recipient_id: users(:archer).id,
+                       created_at: Time.now + (2*7*24*60*60))
     end
 
-    test "should be valid" do
+    test "wink should be valid" do
       assert @wink.valid?
     end
 

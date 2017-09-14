@@ -25,12 +25,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get create" do
-    log_in_as(@user)
-    get create_user_path
-    assert_response :success
-  end
-
   test "should get edit" do
     log_in_as(@user)
     get edit_user_profile_path(@user)
@@ -98,7 +92,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   #    get blocking_user_path(@user)
   #    assert_redirected_to login_url
   #  end
-  # 
+  #
   # test "should redirect winks_received when not logged in" do
   #   get wink_senders(@user)
   #   assert_redirected_to login_url

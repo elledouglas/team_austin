@@ -81,7 +81,7 @@ class UserTest < ActiveSupport::TestCase
   # end
 
   test "password should have a minimum length" do
-    @user.password = @user.password_confirmation = "ab" * 3
+    @user.password = @user.password_confirmation = "ab"  
     assert_not @user.valid?
   end
 
