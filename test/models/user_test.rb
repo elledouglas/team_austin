@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(full_name: "Example User", email: "user@example.com",
+    @user = User.new(full_name: "Example User", email: "user@example.com", age: 25,
                      password: "password", password_confirmation: "password")
   end
 
@@ -26,10 +26,27 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "age should be present" do
+    @user.age = nil
+    assert_not @user.valid?
+  end
+
+  test "user must be at least 18 years old" do
+    @user.age = 17
+    assert_not @user.valid?
+  end
+
+    test "age must be entered in as numeric" do
+    @user.age = "twenty"
+    assert_not @user.valid?
+  end
+
   test "email should not be too long" do
     @user.email = "a" * 244 + "@example.com"
     assert_not @user.valid?
   end
+
+
 
   test "email validation should accept valid addresses" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
@@ -81,7 +98,7 @@ class UserTest < ActiveSupport::TestCase
   # end
 
   test "password should have a minimum length" do
-    @user.password = @user.password_confirmation = "ab"  
+    @user.password = @user.password_confirmation = "ab"
     assert_not @user.valid?
   end
 

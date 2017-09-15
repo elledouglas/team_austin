@@ -8,44 +8,45 @@
     <%= form_for(@user, url: create_user_path) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :full_name %>:
+      <%= f.label :full_name %>: <br>
       <%= f.text_field :full_name, class: 'form-control' %> <br> <br>
 
-      <%= f.label :age %>:
+      <%= f.label :age %>: <br>
       <%= f.text_field :age %><br> <br>
 
-      <%= f.label :children %>:
+      <%= f.label :children %>: <br>
       <%= f.text_field :children, :placeholder => "yes or no" %><br> <br>
 
-      <%= f.label :ethnicity %>:
+      <%= f.label :ethnicity %>: <br>
       <%= f.text_field :ethnicity %><br> <br>
 
-      <%= f.label :gender %>:
+      <%= f.label :gender %>: <br>
       <%= f.select :gender, [ 'male','female' ] %> <br> <br>
 
-      <%= f.label :occupation %>:
+      <%= f.label :occupation %>: <br>
       <%= f.text_field :occupation %><br> <br>
 
-      <%= f.label :height %>:
+      <%= f.label :height %>: <br>
       <%= f.text_field :height, :placeholder => "in cm!" %><br> <br>
 
-      <%= f.label :email %>:
+      <%= f.label :email %>: <br>
       <%= f.email_field :email, class: 'form-control' %> <br> <br>
 
-      <%= f.label :video %>:
-      <%= f.file_field :video %><br>
-<!--
+      <%= f.label :video %>: <br>
+      <%= f.file_field :video %> <br> <br>
+
+      <!--
       <%= f.label :image %>
       <%= f.file_field :image %><br> -->
 
-      <%= f.label :sexual_preference %>:
+      <%= f.label :sexual_preference %>: <br>
       <%= f.select :sexual_preference, [ 'male','female' ] %> <br> <br>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %> <br>
+      <%= f.label :password %> <br>
+      <%= f.password_field :password, class: 'form-control' %> <br> <br>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %> <br>
+      <%= f.label :password_confirmation, "Confirmation" %> <br>
+      <%= f.password_field :password_confirmation, class: 'form-control' %> <br> <br>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

@@ -49,4 +49,5 @@ class ActionDispatch::IntegrationTest
     cookies.delete(:remember_token)
   end
 
+  
 end

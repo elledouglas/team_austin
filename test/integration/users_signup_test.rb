@@ -18,6 +18,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_difference 'User.count', 1 do     # this line asserts there is a diff of 1 in the amount of users
       post create_user_path, params: { user: { full_name:  "Example User",
                                          email: "user@example.com",
+                                         age: 30,
                                          password:              "password",
                                          password_confirmation: "password" } }
     end

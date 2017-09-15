@@ -7,6 +7,9 @@ class BlockingTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
   end
 
+
+
+                  #There is no blocking users page so this is commented out.
   # test "blocking page" do
   #   get blocking_user_path(@user)
   #   assert_not @user.blocking.empty?

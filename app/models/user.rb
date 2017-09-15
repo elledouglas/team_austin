@@ -19,34 +19,34 @@ class User < ApplicationRecord
   has_many :wink_recipients, through: :active_winks
   has_many :wink_senders, through: :passive_winks
 
-
     # attr_accessible :email, :password, :password_confirmation
   attr_accessor :remember_token, :activation_token, :reset_token
 
-  # Validations for full_name
   validates :full_name,  presence: true, length: { maximum: 50 }
 
-
-  # Validations for email
   before_save { email.downcase! }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX, message: "not valid"},
                     uniqueness: { case_sensitive: false }
 
-  # Validations for password
   validates :password, presence: true, length: { minimum: 3 }, allow_nil: true
   has_secure_password
+
+  validates_inclusion_of :age, in: 18..120, message: "Must be 18 years or older to signup!"
+  validates_numericality_of :age, only_integer: true, allow_nil: false, message: "Must enter in age as a whole integer!"
 
   mount_uploader :video, VideoUploader
   mount_uploader :image, ImageUploader
 
+ #-----------------------------------------------------------------------------------------------------
+
   def index
-        @user = User.where(gender: current_user.sexual_preference).all
+    @user = User.where(gender: current_user.sexual_preference).all
   end
 
   def new
-      @user = User.new
+    @user = User.new
   end
 
   # Returns the hash digest of the given string.
@@ -81,11 +81,11 @@ class User < ApplicationRecord
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
-  # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)
   end
 
+  #-----------------------------------------------------------------------------------------------------
   # METHODS FOR PASSWORD RESET
 
   # Returns true if a password reset has expired.
@@ -105,14 +105,13 @@ class User < ApplicationRecord
     UserMailer.password_reset(self).deliver_now
   end
 
+  #-----------------------------------------------------------------------------------------------------
   # METHODS FOR USER BLOCKING FUNCTIONALITY
 
-  # blocks a user.
   def block(other_user)
     blocking << other_user
   end
 
-  # Unblocks a user.
   def unblock(other_user)
     blocking.delete(other_user)
   end
@@ -122,14 +121,13 @@ class User < ApplicationRecord
     blocking.include?(other_user)
   end
 
+  #-----------------------------------------------------------------------------------------------------
   # METHODS FOR USER WINKING FUNCTIONALITY
 
-  # winks at a user.
   def wink_at(other_user)
     wink_recipients << other_user
   end
 
-  # Returns true if the current user has winked at the other user.
   def winked_at?(other_user)
     wink_recipients.include?(other_user)
   end
